@@ -5,8 +5,8 @@ def load_lexicon(pos_path, neg_path):
     """
     Load lexicon positif dan negatif dari file CSV InSet.
     """
-    lex_pos = set(pd.read_csv(pos_path)["word"])
-    lex_neg = set(pd.read_csv(neg_path)["word"])
+    lex_pos = set(pd.read_csv(pos_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
+    lex_neg = set(pd.read_csv(neg_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
     return lex_pos, lex_neg
 
 def klasifikasi_sentimen(teks, lex_pos, lex_neg):

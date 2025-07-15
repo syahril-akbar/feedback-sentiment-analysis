@@ -46,7 +46,7 @@ def plot_klaster_count(df, path="output/jumlah_komentar_per_klaster.png"):
     """
     pastikan_output_folder()
     plt.figure(figsize=(8, 5))
-    sns.countplot(x="klaster", data=df, palette="Set2")
+    sns.countplot(x="klaster", hue="klaster", data=df, palette="Set2", legend=False)
     plt.title("Jumlah Komentar per Klaster")
     plt.xlabel("Klaster")
     plt.ylabel("Jumlah")
@@ -60,20 +60,20 @@ def visualisasi_semua(df):
     plot_distribusi_sentimen(df)
     plot_distribusi_makna(df)
     plot_klaster_count(df)
-    print("[✓] Visualisasi berhasil disimpan di folder output/")
+    print("[OK] Visualisasi berhasil disimpan di folder output/")
 
 def tabel_statistik_per_klaster(df, path="output/statistik_per_klaster.csv"):
     """
     Buat tabel jumlah data per klaster dan distribusi sentimen & makna di dalamnya.
     """
     summary = df.groupby("klaster").agg({
-        "komentar": "count",
+        "kritik dan saran": "count",
         "sentimen": lambda x: x.value_counts().to_dict(),
         "makna": lambda x: x.value_counts().to_dict()
     }).rename(columns={"komentar": "jumlah_komentar"})
 
     summary.to_csv(path)
-    print(f"[✓] Statistik per klaster disimpan di: {path}")
+    print(f"[OK] Statistik per klaster disimpan di: {path}")
     return summary
 
 
@@ -84,8 +84,8 @@ def contoh_komentar_per_klaster(df, n=3, path="output/contoh_komentar_per_klaste
     with open(path, "w", encoding="utf-8") as f:
         for label in sorted(df["klaster"].unique()):
             f.write(f"--- Klaster {label} ---\n")
-            contoh = df[df["klaster"] == label]["komentar"].head(n).tolist()
+            contoh = df[df["klaster"] == label]["kritik dan saran"].head(n).tolist()
             for i, kalimat in enumerate(contoh, 1):
                 f.write(f"{i}. {kalimat}\n")
             f.write("\n")
-    print(f"[✓] Contoh komentar disimpan di: {path}")
+    print(f"[OK] Contoh komentar disimpan di: {path}")

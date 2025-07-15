@@ -6,7 +6,9 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
     Evaluasi hasil sistem menggunakan confusion matrix berdasarkan label manual (ground truth).
     """
     df_gt = pd.read_excel(path_ground_truth)
-    df_eval = pd.merge(df_gt, df_prediksi, on="komentar", how="inner")
+    df_gt.columns = df_gt.columns.str.lower()
+    df_gt = df_gt.rename(columns={"komentar": "kritik dan saran"})
+    df_eval = pd.merge(df_gt, df_prediksi, on="kritik dan saran", how="inner")
 
     hasil = []
     hasil.append("=== Evaluasi Sentimen ===\n")

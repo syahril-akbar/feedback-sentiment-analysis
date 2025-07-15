@@ -6,7 +6,7 @@ def main():
     df = utils.load_data(config.DATA_PATH)
 
     # [2] Lakukan preprocessing teks
-    df["teks_bersih"] = df["komentar"].apply(preprocessing.proses_teks)
+    df["teks_bersih"] = df["kritik dan saran"].apply(preprocessing.proses_teks)
 
     # [3] Konversi teks ke TF-IDF
     tfidf_matrix, feature_names = tfidf_vectorizer.ubah_ke_tfidf(df["teks_bersih"])
