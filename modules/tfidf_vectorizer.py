@@ -6,4 +6,4 @@ def ubah_ke_tfidf(teks_bersih):
     """
     vectorizer = TfidfVectorizer()
     matrix = vectorizer.fit_transform(teks_bersih)
-    return matrix, vectorizer.get_feature_names_out()
+    return matrix, vectorizer.get_feature_names_out(), vectorizer

@@ -18,5 +18,3 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
 
     # Cetak dan simpan ke file
     print("".join(hasil))
-    with open("output/laporan_akhir.txt", "w") as f:
-        f.writelines(hasil)
