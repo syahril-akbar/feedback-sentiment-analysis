@@ -1,4 +1,4 @@
-from modules import preprocessing, tfidf_vectorizer, clustering, sentiment_lexicon, evaluation, utils
+from modules import preprocessing, tfidf_vectorizer, clustering, sentiment_lexicon, evaluation, utils, visualization
 import config
 
 def main():
@@ -26,6 +26,9 @@ def main():
 
     # [8] Evaluasi terhadap data uji manual (ground truth)
     evaluation.evaluasi_manual(df, config.GROUND_TRUTH_PATH)
+
+    # [9] Visualisasi hasil
+    visualization.visualisasi_semua(df)
 
 if __name__ == "__main__":
     main()
