@@ -61,3 +61,31 @@ def visualisasi_semua(df):
     plot_distribusi_makna(df)
     plot_klaster_count(df)
     print("[✓] Visualisasi berhasil disimpan di folder output/")
+
+def tabel_statistik_per_klaster(df, path="output/statistik_per_klaster.csv"):
+    """
+    Buat tabel jumlah data per klaster dan distribusi sentimen & makna di dalamnya.
+    """
+    summary = df.groupby("klaster").agg({
+        "komentar": "count",
+        "sentimen": lambda x: x.value_counts().to_dict(),
+        "makna": lambda x: x.value_counts().to_dict()
+    }).rename(columns={"komentar": "jumlah_komentar"})
+
+    summary.to_csv(path)
+    print(f"[✓] Statistik per klaster disimpan di: {path}")
+    return summary
+
+
+def contoh_komentar_per_klaster(df, n=3, path="output/contoh_komentar_per_klaster.txt"):
+    """
+    Simpan beberapa contoh komentar dari masing-masing klaster.
+    """
+    with open(path, "w", encoding="utf-8") as f:
+        for label in sorted(df["klaster"].unique()):
+            f.write(f"--- Klaster {label} ---\n")
+            contoh = df[df["klaster"] == label]["komentar"].head(n).tolist()
+            for i, kalimat in enumerate(contoh, 1):
+                f.write(f"{i}. {kalimat}\n")
+            f.write("\n")
+    print(f"[✓] Contoh komentar disimpan di: {path}")

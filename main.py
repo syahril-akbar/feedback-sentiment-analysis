@@ -27,8 +27,10 @@ def main():
     # [8] Evaluasi terhadap data uji manual (ground truth)
     evaluation.evaluasi_manual(df, config.GROUND_TRUTH_PATH)
 
-    # [9] Visualisasi hasil
+    # [9] Visualisasi dan laporan deskriptif
     visualization.visualisasi_semua(df)
+    visualization.tabel_statistik_per_klaster(df)
+    visualization.contoh_komentar_per_klaster(df, n=3)
 
 if __name__ == "__main__":
     main()
