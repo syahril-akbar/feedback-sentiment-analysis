@@ -127,20 +127,4 @@ def main():
     print(f"Analisis selesai. Output terminal telah disimpan ke: {log_file_path}")
 
 if __name__ == "__main__":
-    main()feat: Implement comprehensive data analysis and refactor logging
-
-This commit introduces a complete data analysis pipeline within `main.py` and refactors the logging mechanism to centralize all output.
-
-Key changes include:
-- `main.py`:
-    - All console output is now redirected to `output/laporan_akhir.txt`, providing a single, comprehensive analysis report.
-    - Integrated detailed analysis steps as per `teknik_analisis_data.txt`, including:
-        - Text preprocessing examples (before and after).
-        - K-Means clustering analysis: Silhouette Score, top TF-IDF keywords per cluster, and example comments for each cluster.
-        - Sentiment and meaning distribution analysis.
-        - Evaluation of sentiment and meaning classification using manual test data.
-    - Re-enabled visualization calls to ensure all relevant plots and reports are generated.
-- `modules/evaluation.py`: Modified `evaluasi_manual` to print its report to stdout instead of writing directly to `laporan_akhir.txt`, allowing `main.py`'s logging redirection to capture it.
-- `modules/tfidf_vectorizer.py`: Updated `ubah_ke_tfidf` to return the `TfidfVectorizer` object, enabling keyword extraction in `main.py`.
-
-This refactoring centralizes reporting and enhances the analytical capabilities of the main script.
+    main()
