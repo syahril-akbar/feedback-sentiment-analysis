@@ -60,7 +60,6 @@ def visualisasi_semua(df):
     plot_distribusi_sentimen(df)
     plot_distribusi_makna(df)
     plot_klaster_count(df)
-    print("[OK] Visualisasi berhasil disimpan di folder output/")
 
 def tabel_statistik_per_klaster(df, path="output/statistik_per_klaster.csv"):
     """
@@ -73,9 +72,7 @@ def tabel_statistik_per_klaster(df, path="output/statistik_per_klaster.csv"):
     }).rename(columns={"komentar": "jumlah_komentar"})
 
     summary.to_csv(path)
-    print(f"[OK] Statistik per klaster disimpan di: {path}")
     return summary
-
 
 def contoh_komentar_per_klaster(df, n=3, path="output/contoh_komentar_per_klaster.txt"):
     """
@@ -88,4 +85,13 @@ def contoh_komentar_per_klaster(df, n=3, path="output/contoh_komentar_per_klaste
             for i, kalimat in enumerate(contoh, 1):
                 f.write(f"{i}. {kalimat}\n")
             f.write("\n")
-    print(f"[OK] Contoh komentar disimpan di: {path}")
+
+def tampilkan_analisis_sentimen_dan_makna(df):
+    """
+    Menampilkan hasil analisis sentimen dan makna ke konsol.
+    """
+    print("Distribusi Sentimen:")
+    print((df['sentimen'].value_counts(normalize=True) * 100).to_string(float_format="%.2f%%"))
+    
+    print("\nDistribusi Makna Komentar:")
+    print((df['makna'].value_counts(normalize=True) * 100).to_string(float_format="%.2f%%"))
