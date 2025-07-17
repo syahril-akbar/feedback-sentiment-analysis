@@ -33,13 +33,15 @@ def main():
         print(f"Teks telah diubah menjadi matriks TF-IDF dengan {tfidf_matrix.shape[1]} fitur unik.\n")
 
         # [3] K-Means Clustering
-        df["klaster"], best_k = clustering.kmeans_clustering(tfidf_matrix)
+        kmeans_model, best_k, labels = clustering.kmeans_clustering(tfidf_matrix)
+        df["klaster"] = labels
         print("--- TAHAP 3: CLUSTERING K-MEANS ---")
         print(f"Clustering selesai dengan k={best_k} (nilai k terbaik).")
-        clustering.analisis_klaster(df, tfidf_matrix, vectorizer, feature_names)
+        # Pass the trained model to the analysis function, not feature_names
+        clustering.analisis_klaster(df, tfidf_matrix, kmeans_model, vectorizer)
         
         print("\nContoh Komentar per Klaster:")
-        visualization.contoh_komentar_per_klaster(df, n=2)
+        visualization.contoh_komentar_per_klaster(df, n=10)
 
         # [4] Sentiment & Meaning Analysis
         lex_pos, lex_neg = sentiment_lexicon.load_lexicon(config.LEXICON_POS, config.LEXICON_NEG)
