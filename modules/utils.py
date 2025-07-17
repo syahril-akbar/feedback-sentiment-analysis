@@ -45,3 +45,19 @@ def save_meaningful_comments(df, output_path):
 
     # Simpan ke CSV
     output_df.to_csv(output_path, index=False)
+
+def save_constructive_comments(df, output_path, threshold=2):
+    """
+    Simpan kritik dan saran yang dianggap konstruktif ke dalam satu kolom di file CSV.
+    """
+    # Membuat direktori jika belum ada
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    # Filter komentar yang skor konstruktifnya di atas ambang batas
+    constructive_comments = df[df["skor_konstruktif"] >= threshold]["kritik dan saran"]
+    
+    # Buat DataFrame baru dengan nama kolom yang diinginkan
+    output_df = pd.DataFrame({"saran konstruktif": constructive_comments})
+
+    # Simpan ke CSV
+    output_df.to_csv(output_path, index=False)

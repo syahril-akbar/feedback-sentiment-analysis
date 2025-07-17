@@ -47,9 +47,16 @@ def main():
         lex_pos, lex_neg = sentiment_lexicon.load_lexicon(config.LEXICON_POS, config.LEXICON_NEG)
         df["sentimen"] = df["teks_bersih"].apply(lambda teks: sentiment_lexicon.klasifikasi_sentimen(teks, lex_pos, lex_neg))
         df["makna"] = df["teks_bersih"].apply(sentiment_lexicon.cek_komentar_bermakna)
+        df["skor_konstruktif"] = df["teks_bersih"].apply(sentiment_lexicon.analisis_konstruktif)
 
         print("\n--- TAHAP 4: ANALISIS SENTIMEN & MAKNA ---")
         visualization.tampilkan_analisis_sentimen_dan_makna(df)
+
+        # DEBUG: Cek distribusi nilai 'skor_konstruktif'
+        print("\n--- DEBUG INFO ---")
+        print("Distribusi nilai pada kolom 'skor_konstruktif':")
+        print(df['skor_konstruktif'].value_counts().sort_index())
+        print("------------------\n")
 
         # [5] Evaluation
         print("\n--- TAHAP 5: EVALUASI MODEL ---")
@@ -65,12 +72,14 @@ def main():
         # [6] Save Results & Visualizations
         utils.save_output(df, config.OUTPUT_PATH)
         utils.save_meaningful_comments(df, config.OUTPUT_MEANINGFUL_PATH)
+        utils.save_constructive_comments(df, config.OUTPUT_CONSTRUCTIVE_PATH)
         visualization.visualisasi_semua(df)
         visualization.tabel_statistik_per_klaster(df)
         
         print("\n--- TAHAP 6: PENYIMPANAN HASIL ---")
         print(f"-> Hasil analisis (CSV) telah disimpan di '{config.OUTPUT_PATH}'.")
         print(f"-> Komentar bermakna (CSV) telah disimpan di '{config.OUTPUT_MEANINGFUL_PATH}'.")
+        print(f"-> Saran konstruktif (CSV) telah disimpan di '{config.OUTPUT_CONSTRUCTIVE_PATH}'.")
         print("-> Visualisasi (PNG) telah disimpan di folder 'output/'.")
         print(f"-> Statistik per klaster (CSV) telah disimpan di 'output/statistik_per_klaster.csv'.")
         

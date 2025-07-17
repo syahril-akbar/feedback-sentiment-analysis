@@ -37,7 +37,7 @@ Berikut adalah langkah-langkah untuk menyiapkan dan menjalankan proyek ini.
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/repo-name.git
+git https://github.com/syahril-akbar/skripsi-kmeans-nlp-monev.git
 cd skripsi-kmeans-nlp-monev
 ```
 
