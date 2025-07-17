@@ -7,8 +7,8 @@ LEXICON_POS = "lexicon/InSet_positif.tsv"
 LEXICON_NEG = "lexicon/InSet_negatif.tsv"
 
 # Output
-OUTPUT_KLASTER = "output/hasil_klaster.csv"
-OUTPUT_SENTIMEN = "output/hasil_sentimen.csv"
+OUTPUT_PATH = "output/hasil_akhir.csv"
+OUTPUT_MEANINGFUL_PATH = "output/komentar_bermakna.csv"
 
 # Parameter logika
 MAKNA_THRESHOLD = 1  # Minimum jumlah kata agar dianggap bermakna

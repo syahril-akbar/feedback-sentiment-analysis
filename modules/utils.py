@@ -9,13 +9,39 @@ def load_data(path):
     df.columns = df.columns.str.lower()
     return df
 
-def save_output(df, path_klaster, path_sentimen):
+def save_output(df, output_path):
     """
-    Simpan hasil klaster dan sentimen ke file CSV terpisah.
+    Simpan hasil akhir analisis ke dalam satu file CSV.
     """
     # Membuat direktori jika belum ada
-    os.makedirs(os.path.dirname(path_klaster), exist_ok=True)
-    os.makedirs(os.path.dirname(path_sentimen), exist_ok=True)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    df[["kritik dan saran", "klaster"]].to_csv(path_klaster, index=False)
-    df[["kritik dan saran", "sentimen", "makna"]].to_csv(path_sentimen, index=False)
+    # Memilih kolom yang akan disimpan
+    output_columns = [
+        "kritik dan saran",
+        "teks_bersih",
+        "klaster",
+        "sentimen",
+        "makna"
+    ]
+    
+    # Memastikan semua kolom ada di dataframe sebelum menyimpan
+    save_df = df[[col for col in output_columns if col in df.columns]]
+
+    save_df.to_csv(output_path, index=False)
+
+def save_meaningful_comments(df, output_path):
+    """
+    Simpan kritik dan saran yang bermakna ke dalam satu kolom di file CSV.
+    """
+    # Membuat direktori jika belum ada
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+    # Filter komentar yang bermakna
+    meaningful_comments = df[df["makna"] == "bermakna"]["kritik dan saran"]
+    
+    # Buat DataFrame baru dengan nama kolom yang diinginkan
+    output_df = pd.DataFrame({"komentar bermakna": meaningful_comments})
+
+    # Simpan ke CSV
+    output_df.to_csv(output_path, index=False)

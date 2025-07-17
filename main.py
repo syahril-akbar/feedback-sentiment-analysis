@@ -56,13 +56,21 @@ def main():
         print("Evaluasi performa klasifikasi Sentimen dan Makna berdasarkan data uji manual:")
         evaluation.evaluasi_manual(df, config.GROUND_TRUTH_PATH)
 
+        # DEBUG: Cek distribusi nilai 'makna'
+        print("\n--- DEBUG INFO ---")
+        print("Distribusi nilai pada kolom 'makna':")
+        print(df['makna'].value_counts())
+        print("------------------\n")
+
         # [6] Save Results & Visualizations
-        utils.save_output(df, config.OUTPUT_KLASTER, config.OUTPUT_SENTIMEN)
+        utils.save_output(df, config.OUTPUT_PATH)
+        utils.save_meaningful_comments(df, config.OUTPUT_MEANINGFUL_PATH)
         visualization.visualisasi_semua(df)
         visualization.tabel_statistik_per_klaster(df)
         
         print("\n--- TAHAP 6: PENYIMPANAN HASIL ---")
-        print(f"-> Hasil analisis (CSV) telah disimpan di '{config.OUTPUT_KLASTER}' dan '{config.OUTPUT_SENTIMEN}'.")
+        print(f"-> Hasil analisis (CSV) telah disimpan di '{config.OUTPUT_PATH}'.")
+        print(f"-> Komentar bermakna (CSV) telah disimpan di '{config.OUTPUT_MEANINGFUL_PATH}'.")
         print("-> Visualisasi (PNG) telah disimpan di folder 'output/'.")
         print(f"-> Statistik per klaster (CSV) telah disimpan di 'output/statistik_per_klaster.csv'.")
         
