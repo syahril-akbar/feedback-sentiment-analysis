@@ -87,5 +87,6 @@ Setelah eksekusi selesai, semua hasil akan tersimpan di dalam direktori `output/
 - **`laporan_akhir.txt`**: Laporan teks lengkap yang berisi semua output dari konsol, termasuk kata kunci per klaster, skor evaluasi, dan ringkasan lainnya.
 - **`hasil_akhir.csv`**: File CSV utama yang berisi hasil analisis lengkap untuk setiap baris data, mencakup kritik dan saran asli, teks bersih, label klaster, sentimen, dan penanda makna.
 - **`komentar_bermakna.csv`**: File CSV yang hanya berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "bermakna" oleh sistem.
+- **`saran_konstruktif.csv`**: File CSV yang berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "konstruktif" berdasarkan skor analisis konstruktif.
 - **`statistik_per_klaster.csv`**: Ringkasan statistik untuk setiap klaster.
 - **File Gambar (`.png`)**: Berbagai visualisasi seperti diagram lingkaran untuk distribusi sentimen, diagram batang untuk distribusi klaster, dan word cloud untuk setiap klaster.
