@@ -4,6 +4,6 @@ def ubah_ke_tfidf(teks_bersih):
     """
     Konversi teks bersih ke dalam representasi fitur numerik TF-IDF.
     """
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(min_df=3, max_df=0.85)
     matrix = vectorizer.fit_transform(teks_bersih)
     return matrix, vectorizer.get_feature_names_out(), vectorizer

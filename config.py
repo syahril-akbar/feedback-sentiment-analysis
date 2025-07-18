@@ -12,4 +12,4 @@ OUTPUT_MEANINGFUL_PATH = "output/komentar_bermakna.csv"
 OUTPUT_CONSTRUCTIVE_PATH = "output/saran_konstruktif.csv"
 
 # Parameter logika
-MAKNA_THRESHOLD = 1  # Minimum jumlah kata agar dianggap bermakna
+MAKNA_THRESHOLD = 2  # Minimum jumlah kata agar dianggap bermakna
