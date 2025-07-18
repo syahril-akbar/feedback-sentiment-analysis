@@ -5,3 +5,4 @@ Sastrawi
 openpyxl
 matplotlib
 seaborn
+wordcloud

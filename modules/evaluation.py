@@ -25,6 +25,12 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
     if not df_eval.empty:
         # Hapus duplikat jika ada teks bersih yang sama setelah preprocessing
         df_eval = df_eval.drop_duplicates(subset=["teks_bersih"])
+
+        # Pastikan kolom sentimen dan makna adalah string dan tangani NaN
+        df_eval["sentimen_manual"] = df_eval["sentimen_manual"].astype(str).fillna("UNKNOWN")
+        df_eval["sentimen"] = df_eval["sentimen"].astype(str).fillna("UNKNOWN")
+        df_eval["makna_manual"] = df_eval["makna_manual"].astype(str).fillna("UNKNOWN")
+        df_eval["makna"] = df_eval["makna"].astype(str).fillna("UNKNOWN")
         
         hasil.append("=== Evaluasi Sentimen ===\n")
         hasil.append(classification_report(df_eval["sentimen_manual"], df_eval["sentimen"], zero_division=0, labels=df_eval['sentimen_manual'].unique()))

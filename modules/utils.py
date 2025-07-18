@@ -26,10 +26,11 @@ def save_output(df, output_path):
         "teks_bersih",
         "klaster",
         "sentimen",
-        "makna"
+        "makna",
+        "skor_konstruktif" # Tambahkan kolom skor_konstruktif
     ]
     
-    # Memastikan semua kolom ada di dataframe sebelum menyimpan
+    # Memastikan semua kolom ada di dataframe sebelum menyimpan dan mengurutkannya
     save_df = df[[col for col in output_columns if col in df.columns]]
 
     save_df.to_csv(output_path, index=False)
@@ -41,11 +42,11 @@ def save_meaningful_comments(df, output_path):
     # Membuat direktori jika belum ada
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # Filter komentar yang bermakna
-    meaningful_comments = df[df["makna"] == "bermakna"]["kritik dan saran"]
+    # Filter komentar yang bermakna dan pilih kolom yang relevan
+    meaningful_df = df[df["makna"] == "bermakna"][["kritik dan saran", "klaster", "sentimen", "makna"]]
     
-    # Buat DataFrame baru dengan nama kolom yang diinginkan
-    output_df = pd.DataFrame({"komentar bermakna": meaningful_comments})
+    # Ubah nama kolom untuk output
+    output_df = meaningful_df.rename(columns={"kritik dan saran": "komentar bermakna"})
 
     # Simpan ke CSV
     output_df.to_csv(output_path, index=False)
@@ -57,11 +58,11 @@ def save_constructive_comments(df, output_path, threshold=2):
     # Membuat direktori jika belum ada
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # Filter komentar yang skor konstruktifnya di atas ambang batas
-    constructive_comments = df[df["skor_konstruktif"] >= threshold]["kritik dan saran"]
+    # Filter komentar yang skor konstruktifnya di atas ambang batas dan pilih kolom yang relevan
+    constructive_df = df[df["skor_konstruktif"] >= threshold][["kritik dan saran", "klaster", "sentimen", "skor_konstruktif"]]
     
-    # Buat DataFrame baru dengan nama kolom yang diinginkan
-    output_df = pd.DataFrame({"saran konstruktif": constructive_comments})
+    # Ubah nama kolom untuk output
+    output_df = constructive_df.rename(columns={"kritik dan saran": "saran konstruktif"})
 
     # Simpan ke CSV
     output_df.to_csv(output_path, index=False)

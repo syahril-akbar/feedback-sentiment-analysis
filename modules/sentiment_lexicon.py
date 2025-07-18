@@ -12,13 +12,16 @@ def load_lexicon(pos_path, neg_path):
 def klasifikasi_sentimen(teks, lex_pos, lex_neg):
     """
     Klasifikasi sentimen berdasarkan perhitungan skor kata positif dan negatif.
+    Mengembalikan tuple (label_sentimen, skor_numerik).
     """
     skor = sum(1 for kata in teks.split() if kata in lex_pos) - sum(1 for kata in teks.split() if kata in lex_neg)
     if skor > 0:
-        return "positif"
+        label = "positif"
     elif skor < 0:
-        return "negatif"
-    return "netral"
+        label = "negatif"
+    else:
+        label = "netral"
+    return label, skor
 
 def cek_komentar_bermakna(teks):
     """

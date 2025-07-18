@@ -40,14 +40,14 @@ def main():
         # Pass the trained model to the analysis function, not feature_names
         clustering.analisis_klaster(df, tfidf_matrix, kmeans_model, vectorizer)
         
-        print("\nContoh Komentar per Klaster:")
-        visualization.contoh_komentar_per_klaster(df, n=10)
-
         # [4] Sentiment & Meaning Analysis
         lex_pos, lex_neg = sentiment_lexicon.load_lexicon(config.LEXICON_POS, config.LEXICON_NEG)
         df["sentimen"] = df["teks_bersih"].apply(lambda teks: sentiment_lexicon.klasifikasi_sentimen(teks, lex_pos, lex_neg))
         df["makna"] = df["teks_bersih"].apply(sentiment_lexicon.cek_komentar_bermakna)
         df["skor_konstruktif"] = df["teks_bersih"].apply(sentiment_lexicon.analisis_konstruktif)
+
+        print("\nContoh Komentar per Klaster:")
+        visualization.contoh_komentar_per_klaster(df, n=10)
 
         print("\n--- TAHAP 4: ANALISIS SENTIMEN & MAKNA ---")
         visualization.tampilkan_analisis_sentimen_dan_makna(df)
@@ -75,7 +75,7 @@ def main():
         utils.save_meaningful_comments(df, config.OUTPUT_MEANINGFUL_PATH)
         utils.save_constructive_comments(df, config.OUTPUT_CONSTRUCTIVE_PATH)
         visualization.visualisasi_semua(df)
-        visualization.plot_silhouette_scores(silhouette_scores)
+        visualization.plot_silhouette_scores(silhouette_scores, best_k)
         visualization.tabel_statistik_per_klaster(df)
         
         print("\n--- TAHAP 6: PENYIMPANAN HASIL ---")
@@ -83,6 +83,7 @@ def main():
         print(f"-> Komentar bermakna (CSV) telah disimpan di '{config.OUTPUT_MEANINGFUL_PATH}'.")
         print(f"-> Saran konstruktif (CSV) telah disimpan di '{config.OUTPUT_CONSTRUCTIVE_PATH}'.")
         print("-> Visualisasi (PNG) telah disimpan di folder 'output/'.")
+        print(f"-> Word Cloud per klaster (PNG) telah disimpan di folder 'output/'.")
         print(f"-> Statistik per klaster (CSV) telah disimpan di 'output/statistik_per_klaster.csv'.")
         
         print("\n" + "="*50)
