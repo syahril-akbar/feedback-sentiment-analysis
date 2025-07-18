@@ -95,3 +95,22 @@ def tampilkan_analisis_sentimen_dan_makna(df):
     
     print("\nDistribusi Makna Komentar:")
     print((df['makna'].value_counts(normalize=True) * 100).to_string(float_format="%.2f%%"))
+
+
+def plot_silhouette_scores(silhouette_scores, path="output/silhouette_scores.png"):
+    """
+    Plot silhouette scores for different values of k.
+    """
+    pastikan_output_folder()
+    plt.figure(figsize=(8, 5))
+    k_values = list(silhouette_scores.keys())
+    scores = list(silhouette_scores.values())
+    
+    plt.plot(k_values, scores, 'bo-', markersize=8, lw=2)
+    plt.xlabel("Jumlah Klaster (k)")
+    plt.ylabel("Silhouette Score")
+    plt.title("Silhouette Score untuk Menentukan k Optimal")
+    plt.xticks(k_values)
+    plt.grid(True)
+    plt.savefig(path)
+    plt.close()

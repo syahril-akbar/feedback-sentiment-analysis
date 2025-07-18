@@ -33,7 +33,7 @@ def main():
         print(f"Teks telah diubah menjadi matriks TF-IDF dengan {tfidf_matrix.shape[1]} fitur unik.\n")
 
         # [3] K-Means Clustering
-        kmeans_model, best_k, labels = clustering.kmeans_clustering(tfidf_matrix)
+        kmeans_model, best_k, labels, silhouette_scores = clustering.kmeans_clustering(tfidf_matrix)
         df["klaster"] = labels
         print("--- TAHAP 3: CLUSTERING K-MEANS ---")
         print(f"Clustering selesai dengan k={best_k} (nilai k terbaik).")
@@ -74,6 +74,7 @@ def main():
         utils.save_meaningful_comments(df, config.OUTPUT_MEANINGFUL_PATH)
         utils.save_constructive_comments(df, config.OUTPUT_CONSTRUCTIVE_PATH)
         visualization.visualisasi_semua(df)
+        visualization.plot_silhouette_scores(silhouette_scores)
         visualization.tabel_statistik_per_klaster(df)
         
         print("\n--- TAHAP 6: PENYIMPANAN HASIL ---")

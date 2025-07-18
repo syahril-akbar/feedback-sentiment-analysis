@@ -6,11 +6,12 @@ import numpy as np
 def kmeans_clustering(matrix, range_k=(2, 10)):
     """
     Jalankan K-Means clustering dan cari jumlah klaster optimal menggunakan Silhouette Score.
-    Mengembalikan model K-Means terbaik, jumlah klaster (k), dan label untuk setiap data.
+    Mengembalikan model K-Means terbaik, jumlah klaster (k), label, dan skor siluet untuk setiap k.
     """
     best_score = -1
     best_k = 2
     best_model = None
+    silhouette_scores = {}
 
     for k in range(*range_k):
         # Gunakan n_init='auto' untuk versi scikit-learn yang lebih baru
@@ -20,9 +21,11 @@ def kmeans_clustering(matrix, range_k=(2, 10)):
         
         # Hindari error silhouette_score dengan 1 cluster
         if len(np.unique(labels)) < 2:
+            silhouette_scores[k] = -1 # Atau nilai penalti lain
             continue
             
         score = silhouette_score(matrix, labels)
+        silhouette_scores[k] = score
         
         if score > best_score:
             best_score = score
@@ -30,13 +33,16 @@ def kmeans_clustering(matrix, range_k=(2, 10)):
             best_model = model
 
     if best_model:
-        return best_model, best_k, best_model.labels_
+        return best_model, best_k, best_model.labels_, silhouette_scores
     else:
-        # Fallback jika tidak ada model yang valid ditemukan (kasus langka)
-        # Latih model dengan k=2 sebagai default
+        # Fallback jika tidak ada model yang valid ditemukan
         model = KMeans(n_clusters=2, random_state=42, n_init='auto')
         model.fit(matrix)
-        return model, 2, model.labels_
+        # Hitung skor siluet untuk model fallback
+        fallback_labels = model.labels_
+        fallback_score = silhouette_score(matrix, fallback_labels) if len(np.unique(fallback_labels)) > 1 else -1
+        silhouette_scores[2] = fallback_score
+        return model, 2, fallback_labels, silhouette_scores
 
 def get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words=15):
     """
