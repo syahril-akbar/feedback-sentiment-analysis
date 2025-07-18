@@ -4,6 +4,14 @@ Proyek ini merupakan implementasi sistem untuk menganalisis data teks berupa kri
 
 Metode yang digunakan adalah **K-Means Clustering** untuk pengelompokan topik secara *unsupervised* dan **Sentiment Analysis berbasis Lexicon** untuk menentukan polaritas sentimen.
 
+## 🎯 Tujuan Proyek
+
+Proyek ini bertujuan untuk:
+- Mengimplementasikan algoritma K-Means Clustering untuk mengelompokkan data teks kritikan dan saran secara otomatis.
+- Menganalisis sentimen (positif, negatif, netral) dari setiap kritikan dan saran menggunakan pendekatan berbasis lexicon.
+- Mengidentifikasi topik-topik utama yang muncul dari kritikan dan saran melalui analisis klaster.
+- Menyediakan visualisasi dan laporan yang mudah dipahami untuk membantu interpretasi hasil analisis.
+
 ## 🚀 Fitur Utama
 
 - **Preprocessing Teks**: Membersihkan dan mempersiapkan data teks (case folding, tokenizing, stopword removal, stemming).
@@ -89,4 +97,9 @@ Setelah eksekusi selesai, semua hasil akan tersimpan di dalam direktori `output/
 - **`komentar_bermakna.csv`**: File CSV yang hanya berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "bermakna" oleh sistem.
 - **`saran_konstruktif.csv`**: File CSV yang berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "konstruktif" berdasarkan skor analisis konstruktif.
 - **`statistik_per_klaster.csv`**: Ringkasan statistik untuk setiap klaster.
-- **File Gambar (`.png`)**: Berbagai visualisasi seperti diagram lingkaran untuk distribusi sentimen, diagram batang untuk distribusi klaster, dan word cloud untuk setiap klaster.
+- **`contoh_komentar_per_klaster.txt`**: Contoh komentar dari setiap klaster untuk memudahkan interpretasi.
+- **File Gambar (`.png`)**:
+    - **`distribusi_sentimen.png`**: Diagram lingkaran yang menunjukkan distribusi sentimen (positif, negatif, netral).
+    - **`distribusi_makna.png`**: Diagram yang menunjukkan distribusi komentar bermakna.
+    - **`jumlah_komentar_per_klaster.png`**: Diagram batang yang menunjukkan jumlah komentar di setiap klaster.
+    - **`silhouette_scores.png`**: Grafik yang menunjukkan skor Silhouette untuk penentuan jumlah klaster optimal.
