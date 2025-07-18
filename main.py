@@ -61,7 +61,8 @@ def main():
         # [5] Evaluation
         print("\n--- TAHAP 5: EVALUASI MODEL ---")
         print("Evaluasi performa klasifikasi Sentimen dan Makna berdasarkan data uji manual:")
-        evaluation.evaluasi_manual(df, config.GROUND_TRUTH_PATH)
+        laporan_evaluasi = evaluation.evaluasi_manual(df, config.GROUND_TRUTH_PATH)
+        print(laporan_evaluasi)
 
         # DEBUG: Cek distribusi nilai 'makna'
         print("\n--- DEBUG INFO ---")

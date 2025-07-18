@@ -1,6 +1,6 @@
 # File utama
 DATA_PATH = "data/kritik_saran.xlsx"
-GROUND_TRUTH_PATH = "data/data_uji_manual.xlsx"
+GROUND_TRUTH_PATH = "data/data_uji_manual.csv"
 
 # File lexicon (InSet)
 LEXICON_POS = "lexicon/InSet_positif.tsv"

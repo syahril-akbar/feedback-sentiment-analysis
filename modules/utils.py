@@ -4,9 +4,13 @@ import os
 def load_data(path):
     """
     Load data dari file Excel (.xlsx) dan ubah nama kolom ke lowercase.
+    Memastikan kolom 'kritik dan saran' dibaca sebagai string.
     """
-    df = pd.read_excel(path, dtype=str)
+    df = pd.read_excel(path)
     df.columns = df.columns.str.lower()
+    # Konversi paksa kolom 'kritik dan saran' ke tipe data string untuk menghindari error
+    if 'kritik dan saran' in df.columns:
+        df['kritik dan saran'] = df['kritik dan saran'].astype(str)
     return df
 
 def save_output(df, output_path):
