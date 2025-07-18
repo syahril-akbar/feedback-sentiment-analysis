@@ -12,9 +12,9 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
 
     hasil = []
     hasil.append("=== Evaluasi Sentimen ===\n")
-    hasil.append(classification_report(df_eval["sentimen_manual"], df_eval["sentimen"]))
+    hasil.append(classification_report(df_eval["sentimen_manual"], df_eval["sentimen"], zero_division=0))
     hasil.append("\n=== Evaluasi Makna ===\n")
-    hasil.append(classification_report(df_eval["makna_manual"], df_eval["makna"]))
+    hasil.append(classification_report(df_eval["makna_manual"], df_eval["makna"], zero_division=0))
 
     # Cetak dan simpan ke file
     print("".join(hasil))
