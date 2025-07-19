@@ -1,8 +1,0 @@
-feat: Implementasi alur analisis sentimen dan clustering
-
-Menambahkan skrip utama `main.py` untuk menjalankan keseluruhan proses analisis dari awal hingga akhir.
-
-Perubahan ini mencakup:
-- Integrasi modul preprocessing, TF-IDF, K-Means, analisis sentimen, dan evaluasi.
-- Otomatisasi alur kerja: dari pemuatan data, pemrosesan, clustering, analisis, hingga penyimpanan hasil.
-- Penyimpanan laporan analisis, visualisasi, dan data hasil olahan ke direktori `output`.
