@@ -11,17 +11,24 @@ def pastikan_output_folder(path="output"):
 
 def plot_distribusi_sentimen(df, path="output/distribusi_sentimen.png"):
     """
-    Pie chart distribusi polaritas sentimen.
+    Grafik batang untuk distribusi sentimen (positif, negatif, netral).
     """
     pastikan_output_folder()
-    plt.figure(figsize=(6, 6))
-    df["sentimen"].value_counts().plot.pie(
-        autopct="%1.1f%%", startangle=90,
-        colors=["#66b3ff", "#ff9999", "#99ff99"],
-        wedgeprops={'edgecolor': 'black'}
-    )
+    plt.figure(figsize=(8, 6))
+    ax = sns.countplot(y="sentimen", data=df, hue="sentimen", palette=["#66b3ff", "#ff9999", "#99ff99"], order=df['sentimen'].value_counts().index, legend=False)
+    
+    # Tambahkan persentase pada setiap batang
+    total = len(df['sentimen'])
+    for p in ax.patches:
+        percentage = '{:.1f}%'.format(100 * p.get_width()/total)
+        x = p.get_x() + p.get_width() + 0.02
+        y = p.get_y() + p.get_height()/2
+        ax.annotate(percentage, (x, y))
+
     plt.title("Distribusi Sentimen")
-    plt.ylabel("")
+    plt.xlabel("Jumlah Komentar")
+    plt.ylabel("Sentimen")
+    plt.tight_layout()
     plt.savefig(path)
     plt.close()
 

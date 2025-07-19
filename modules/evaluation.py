@@ -11,7 +11,7 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
     df_gt.columns = df_gt.columns.str.lower()
     df_gt = df_gt.rename(columns={"komentar": "kritik dan saran"})
 
-    # Lakukan preprocessing pada ground truth agar formatnya sama dengan data prediksi
+    # Lakukan pra-pemrosesan pada ground truth agar formatnya sama dengan data prediksi
     df_gt["teks_bersih"] = df_gt["kritik dan saran"].apply(preprocessing.proses_teks)
     
     # Kolom yang relevan dari hasil prediksi
@@ -23,14 +23,14 @@ def evaluasi_manual(df_prediksi, path_ground_truth):
     hasil = []
 
     if not df_eval.empty:
-        # Hapus duplikat jika ada teks bersih yang sama setelah preprocessing
+        # Hapus duplikat jika ada teks bersih yang sama setelah pra-pemrosesan
         df_eval = df_eval.drop_duplicates(subset=["teks_bersih"])
 
         # Pastikan kolom sentimen dan makna adalah string dan tangani NaN
-        df_eval["sentimen_manual"] = df_eval["sentimen_manual"].astype(str).fillna("UNKNOWN")
-        df_eval["sentimen"] = df_eval["sentimen"].astype(str).fillna("UNKNOWN")
-        df_eval["makna_manual"] = df_eval["makna_manual"].astype(str).fillna("UNKNOWN")
-        df_eval["makna"] = df_eval["makna"].astype(str).fillna("UNKNOWN")
+        df_eval["sentimen_manual"] = df_eval["sentimen_manual"].astype(str).fillna("TIDAK DIKETAHUI")
+        df_eval["sentimen"] = df_eval["sentimen"].astype(str).fillna("TIDAK DIKETAHUI")
+        df_eval["makna_manual"] = df_eval["makna_manual"].astype(str).fillna("TIDAK DIKETAHUI")
+        df_eval["makna"] = df_eval["makna"].astype(str).fillna("TIDAK DIKETAHUI")
         
         hasil.append("=== Evaluasi Sentimen ===\n")
         hasil.append(classification_report(df_eval["sentimen_manual"], df_eval["sentimen"], zero_division=0, labels=df_eval['sentimen_manual'].unique()))

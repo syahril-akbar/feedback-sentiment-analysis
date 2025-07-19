@@ -3,8 +3,8 @@ import ssl
 
 def download_nltk_data():
     """
-    Downloads the 'stopwords' and 'punkt' corpora from NLTK.
-    It also handles SSL certificate verification issues.
+    Mengunduh korpus 'stopwords' dan 'punkt' dari NLTK.
+    Fungsi ini juga menangani masalah verifikasi sertifikat SSL.
     """
     try:
         _create_unverified_https_context = ssl._create_unverified_context
@@ -14,19 +14,19 @@ def download_nltk_data():
         ssl._create_default_https_context = _create_unverified_https_context
 
     try:
-        print("Downloading NLTK 'stopwords' corpus...")
+        print("Mengunduh korpus 'stopwords' NLTK...")
         nltk.download('stopwords')
-        print("Successfully downloaded 'stopwords'.")
+        print("Berhasil mengunduh 'stopwords'.")
 
-        print("\nDownloading NLTK 'punkt' tokenizer...")
+        print("\nMengunduh tokenizer 'punkt' NLTK...")
         nltk.download('punkt')
-        print("Successfully downloaded 'punkt'.")
+        print("Berhasil mengunduh 'punkt'.")
 
-        print("\nNLTK data download process complete.")
+        print("\nProses pengunduhan data NLTK selesai.")
 
     except Exception as e:
-        print(f"An error occurred during download: {e}")
-        print("Please check your internet connection and try again.")
+        print(f"Terjadi kesalahan saat mengunduh: {e}")
+        print("Silakan periksa koneksi internet Anda dan coba lagi.")
 
 if __name__ == "__main__":
     download_nltk_data()

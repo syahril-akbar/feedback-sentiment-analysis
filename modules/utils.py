@@ -3,12 +3,12 @@ import os
 
 def load_data(path):
     """
-    Load data dari file Excel (.xlsx) dan ubah nama kolom ke lowercase.
+    Muat data dari file Excel (.xlsx) dan ubah nama kolom ke huruf kecil.
     Memastikan kolom 'kritik dan saran' dibaca sebagai string.
     """
     df = pd.read_excel(path)
     df.columns = df.columns.str.lower()
-    # Konversi paksa kolom 'kritik dan saran' ke tipe data string untuk menghindari error
+    # Konversi paksa kolom 'kritik dan saran' ke tipe data string untuk menghindari galat
     if 'kritik dan saran' in df.columns:
         df['kritik dan saran'] = df['kritik dan saran'].astype(str)
     return df
@@ -17,20 +17,21 @@ def save_output(df, output_path):
     """
     Simpan hasil akhir analisis ke dalam satu file CSV.
     """
-    # Membuat direktori jika belum ada
+    # Buat direktori jika belum ada
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # Memilih kolom yang akan disimpan
+    # Pilih kolom yang akan disimpan
     output_columns = [
         "kritik dan saran",
         "teks_bersih",
         "klaster",
         "sentimen",
+        "skor_sentimen", # Tambahkan kolom skor_sentimen
         "makna",
-        "skor_konstruktif" # Tambahkan kolom skor_konstruktif
+        "skor_konstruktif"
     ]
     
-    # Memastikan semua kolom ada di dataframe sebelum menyimpan dan mengurutkannya
+    # Pastikan semua kolom ada di dataframe sebelum menyimpan dan mengurutkannya
     save_df = df[[col for col in output_columns if col in df.columns]]
 
     save_df.to_csv(output_path, index=False)
@@ -39,7 +40,7 @@ def save_meaningful_comments(df, output_path):
     """
     Simpan kritik dan saran yang bermakna ke dalam satu kolom di file CSV.
     """
-    # Membuat direktori jika belum ada
+    # Buat direktori jika belum ada
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     # Filter komentar yang bermakna dan pilih kolom yang relevan
@@ -55,7 +56,7 @@ def save_constructive_comments(df, output_path, threshold=2):
     """
     Simpan kritik dan saran yang dianggap konstruktif ke dalam satu kolom di file CSV.
     """
-    # Membuat direktori jika belum ada
+    # Buat direktori jika belum ada
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     # Filter komentar yang skor konstruktifnya di atas ambang batas dan pilih kolom yang relevan

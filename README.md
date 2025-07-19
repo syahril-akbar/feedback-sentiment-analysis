@@ -1,33 +1,36 @@
 # Analisis Clustering dan Sentimen pada Data Teks Kritikan dan Saran
 
-Proyek ini merupakan implementasi sistem untuk menganalisis data teks berupa kritikan dan saran. Tujuannya adalah untuk mengelompokkan (clustering) topik-topik utama yang dibicarakan dan menganalisis sentimen (positif/negatif) dari setiap masukan.
+Proyek ini merupakan implementasi sistem untuk menganalisis data teks berupa kritikan dan saran. Tujuannya adalah untuk mengelompokkan (clustering) topik-topik utama yang dibicarakan, menganalisis sentimen (positif/negatif), serta mengidentifikasi masukan yang bermakna dan konstruktif.
 
 Metode yang digunakan adalah **K-Means Clustering** untuk pengelompokan topik secara *unsupervised* dan **Sentiment Analysis berbasis Lexicon** untuk menentukan polaritas sentimen.
 
 ## 🎯 Tujuan Proyek
 
 Proyek ini bertujuan untuk:
-- Mengimplementasikan algoritma K-Means Clustering untuk mengelompokkan data teks kritikan dan saran secara otomatis.
-- Menganalisis sentimen (positif, negatif, netral) dari setiap kritikan dan saran menggunakan pendekatan berbasis lexicon.
+- Mengimplementasikan algoritma K-Means untuk mengelompokkan data teks kritikan dan saran secara otomatis.
+- Menganalisis sentimen (positif, negatif, netral) dari setiap masukan menggunakan pendekatan berbasis lexicon.
+- Mengidentifikasi komentar yang dianggap "bermakna" berdasarkan jumlah kata.
+- Memberikan skor "konstruktif" pada setiap masukan untuk menyoroti saran yang paling relevan.
 - Mengidentifikasi topik-topik utama yang muncul dari kritikan dan saran melalui analisis klaster.
 - Menyediakan visualisasi dan laporan yang mudah dipahami untuk membantu interpretasi hasil analisis.
 
 ## 🚀 Fitur Utama
 
 - **Preprocessing Teks**: Membersihkan dan mempersiapkan data teks (case folding, tokenizing, stopword removal, stemming).
-- **Pembobotan TF-IDF**: Mengubah teks menjadi representasi numerik yang dapat diolah oleh model machine learning.
-- **K-Means Clustering**: Mengelompokkan data secara otomatis ke dalam beberapa klaster (topik) dan menentukan jumlah klaster optimal menggunakan *Silhouette Score*.
-- **Analisis Topik (Kata Kunci)**: Mengidentifikasi kata-kata kunci yang paling representatif dari setiap klaster menggunakan analisis *centroid*.
-- **Analisis Sentimen**: Mengklasifikasikan setiap masukan sebagai positif, negatif, atau netral berdasarkan lexicon Bahasa Indonesia.
-- **Evaluasi Model**: Membandingkan hasil sentimen dan klasifikasi bermakna dengan data uji manual untuk mengukur performa.
-- **Visualisasi Data**: Menghasilkan grafik dan tabel untuk mempermudah interpretasi hasil, seperti distribusi klaster, sentimen, dan word cloud.
+- **Pembobotan TF-IDF**: Mengubah teks menjadi representasi numerik.
+- **K-Means Clustering**: Mengelompokkan data ke dalam beberapa klaster (topik) dan menentukan jumlah klaster optimal menggunakan *Silhouette Score*.
+- **Analisis Topik (Kata Kunci)**: Mengidentifikasi kata-kata kunci yang paling representatif dari setiap klaster.
+- **Analisis Sentimen**: Mengklasifikasikan setiap masukan sebagai positif, negatif, atau netral.
+- **Analisis Makna & Konstruktif**: Memberikan label "Bermakna" atau "Tidak Bermakna" dan menghitung skor konstruktif untuk setiap masukan.
+- **Evaluasi Model**: Membandingkan hasil sentimen dan makna dengan data uji manual untuk mengukur performa.
+- **Visualisasi Data**: Menghasilkan grafik dan tabel (distribusi klaster, sentimen, word cloud, dll).
 - **Laporan Otomatis**: Menghasilkan file laporan `.txt` yang merangkum seluruh proses dan hasil analisis.
 
 ## 📂 Struktur Direktori
 
 ```
 skripsi-kmeans-nlp-monev/
-├── data/                 # Berisi data mentah (kritik_saran.xlsx) dan data uji
+├── data/                 # Berisi data input (kritik_saran.xlsx) dan data uji
 ├── lexicon/              # Berisi lexicon sentimen positif dan negatif
 ├── modules/              # Kumpulan modul Python untuk setiap tahap analisis
 ├── output/               # Tempat menyimpan semua hasil analisis (CSV, gambar, laporan)
@@ -45,7 +48,7 @@ Berikut adalah langkah-langkah untuk menyiapkan dan menjalankan proyek ini.
 ### 1. Clone Repository
 
 ```bash
-git https://github.com/syahril-akbar/skripsi-kmeans-nlp-monev.git
+git clone https://github.com/syahril-akbar/skripsi-kmeans-nlp-monev.git
 cd skripsi-kmeans-nlp-monev
 ```
 
@@ -74,15 +77,16 @@ pip install -r requirements.txt
 
 ### 4. Unduh Data NLTK
 
-Jalankan skrip berikut untuk mengunduh data `stopwords` dan `punkt` dari NLTK yang diperlukan untuk preprocessing.
+Jalankan skrip berikut untuk mengunduh data `stopwords` dan `punkt` dari NLTK.
 
 ```bash
 python download_nltk_data.py
 ```
 
-### 5. Jalankan Analisis
+### 5. Siapkan Data
+Letakkan file data Anda (misalnya `kritik_saran.xlsx`) di dalam direktori `data/`. Pastikan path file sudah benar di `config.py`.
 
-Untuk menjalankan seluruh pipeline analisis, cukup eksekusi file `main.py`.
+### 6. Jalankan Analisis Utama
 
 ```bash
 python main.py
@@ -90,16 +94,16 @@ python main.py
 
 ## 📊 Hasil Analisis
 
-Setelah eksekusi selesai, semua hasil akan tersimpan di dalam direktori `output/`:
+Setelah eksekusi `main.py` selesai, semua hasil akan tersimpan di dalam direktori `output/`:
 
 - **`laporan_akhir.txt`**: Laporan teks lengkap yang berisi semua output dari konsol, termasuk kata kunci per klaster, skor evaluasi, dan ringkasan lainnya.
-- **`hasil_akhir.csv`**: File CSV utama yang berisi hasil analisis lengkap untuk setiap baris data, mencakup kritik dan saran asli, teks bersih, label klaster, sentimen, dan penanda makna.
-- **`komentar_bermakna.csv`**: File CSV yang hanya berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "bermakna" oleh sistem.
-- **`saran_konstruktif.csv`**: File CSV yang berisi daftar kritik dan saran asli yang telah diidentifikasi sebagai "konstruktif" berdasarkan skor analisis konstruktif.
+- **`hasil_akhir.csv`**: File CSV utama yang berisi hasil analisis lengkap untuk setiap baris data (teks asli, teks bersih, klaster, sentimen, makna, skor konstruktif).
+- **`komentar_bermakna.csv`**: CSV yang hanya berisi komentar-komentar yang dilabeli "Bermakna".
+- **`saran_konstruktif.csv`**: CSV yang berisi saran-saran yang diurutkan berdasarkan skor konstruktif tertinggi.
 - **`statistik_per_klaster.csv`**: Ringkasan statistik untuk setiap klaster.
 - **`contoh_komentar_per_klaster.txt`**: Contoh komentar dari setiap klaster untuk memudahkan interpretasi.
 - **File Gambar (`.png`)**:
-    - **`distribusi_sentimen.png`**: Diagram lingkaran yang menunjukkan distribusi sentimen (positif, negatif, netral).
-    - **`distribusi_makna.png`**: Diagram yang menunjukkan distribusi komentar bermakna.
-    - **`jumlah_komentar_per_klaster.png`**: Diagram batang yang menunjukkan jumlah komentar di setiap klaster.
-    - **`silhouette_scores.png`**: Grafik yang menunjukkan skor Silhouette untuk penentuan jumlah klaster optimal.
+    - **`distribusi_sentimen.png`**: Diagram distribusi sentimen.
+    - **`jumlah_komentar_per_klaster.png`**: Diagram batang jumlah komentar per klaster.
+    - **`silhouette_scores.png`**: Grafik skor Silhouette untuk penentuan `k` optimal.
+    - **`word_cloud_klaster_N.png`**: Word cloud untuk setiap klaster.

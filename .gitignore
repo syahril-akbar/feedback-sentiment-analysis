@@ -3,11 +3,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-modules\__pycache__
-*.pyc
-*.pyo
-*.pyd
+modules/__pycache__/
 
 # Virtual Environment
 .venv/
@@ -20,10 +16,14 @@ output/
 .vscode/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
 
 # OS-specific
 .DS_Store
 Thumbs.db
 
+# Environment variables
 .env
+
+# Data
+data/kritik_saran.xlsx

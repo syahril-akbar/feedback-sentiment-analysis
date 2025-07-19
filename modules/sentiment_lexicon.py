@@ -3,7 +3,7 @@ import config
 
 def load_lexicon(pos_path, neg_path):
     """
-    Load lexicon positif dan negatif dari file CSV InSet.
+    Muat leksikon positif dan negatif dari file CSV InSet.
     """
     lex_pos = set(pd.read_csv(pos_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
     lex_neg = set(pd.read_csv(neg_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
@@ -12,7 +12,7 @@ def load_lexicon(pos_path, neg_path):
 def klasifikasi_sentimen(teks, lex_pos, lex_neg):
     """
     Klasifikasi sentimen berdasarkan perhitungan skor kata positif dan negatif.
-    Mengembalikan tuple (label_sentimen, skor_numerik).
+    Mengembalikan Series Pandas dengan 'label' dan 'skor'.
     """
     skor = sum(1 for kata in teks.split() if kata in lex_pos) - sum(1 for kata in teks.split() if kata in lex_neg)
     if skor > 0:
@@ -21,11 +21,11 @@ def klasifikasi_sentimen(teks, lex_pos, lex_neg):
         label = "negatif"
     else:
         label = "netral"
-    return label, skor
+    return pd.Series([label, skor], index=['sentimen', 'skor_sentimen'])
 
 def cek_komentar_bermakna(teks):
     """
-    Klasifikasi apakah komentar termasuk 'bermakna' atau tidak.
+    Klasifikasi apakah komentar termasuk 'bermakna' atau 'tidak bermakna'.
     """
     token = teks.split()
     if len(token) >= config.MAKNA_THRESHOLD:
