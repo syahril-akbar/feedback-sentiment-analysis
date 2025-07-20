@@ -2,11 +2,13 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import pandas as pd
 import numpy as np
+import config
 
-def kmeans_clustering(matrix, range_k=(2, 10)):
+def kmeans_clustering(matrix, range_k=(2, 11)):
     """
     Jalankan K-Means clustering dan cari jumlah klaster optimal menggunakan Silhouette Score.
     Mengembalikan model K-Means terbaik, jumlah klaster (k), label, dan skor siluet untuk setiap k.
+    NOTE: range_k sebaiknya diatur dari file config.py melalui main.py.
     """
     best_score = -1
     best_k = 2
@@ -15,7 +17,7 @@ def kmeans_clustering(matrix, range_k=(2, 10)):
 
     for k in range(*range_k):
         # Gunakan n_init='auto' untuk versi scikit-learn yang lebih baru
-        model = KMeans(n_clusters=k, random_state=42, n_init='auto')
+        model = KMeans(n_clusters=k, random_state=config.RANDOM_SEED, n_init='auto')
         model.fit(matrix)
         labels = model.labels_
         
@@ -36,7 +38,7 @@ def kmeans_clustering(matrix, range_k=(2, 10)):
         return best_model, best_k, best_model.labels_, silhouette_scores
     else:
         # Opsi mundur jika tidak ada model yang valid ditemukan
-        model = KMeans(n_clusters=2, random_state=42, n_init='auto')
+        model = KMeans(n_clusters=2, random_state=config.RANDOM_SEED, n_init='auto')
         model.fit(matrix)
         # Hitung skor siluet untuk model mundur
         fallback_labels = model.labels_
@@ -44,7 +46,7 @@ def kmeans_clustering(matrix, range_k=(2, 10)):
         silhouette_scores[2] = fallback_score
         return model, 2, fallback_labels, silhouette_scores
 
-def get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words=15):
+def get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words):
     """
     Mendapatkan kata kunci paling representatif untuk setiap klaster berdasarkan centroid.
     Ini adalah metode standar untuk menginterpretasikan topik dari sebuah klaster.
@@ -75,11 +77,12 @@ def get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words=15):
         
     return keywords
 
-def analisis_klaster(df, tfidf_matrix, kmeans_model, vectorizer):
+def analisis_klaster(df, tfidf_matrix, kmeans_model, vectorizer, n_top_words):
     """
     Menganalisis dan menampilkan hasil clustering K-Means.
     Fungsi ini sekarang menggunakan model KMeans untuk mendapatkan kata kunci
     dari centroid, yang merupakan representasi inti dari setiap klaster.
+    Mengembalikan kamus kata kunci teratas per klaster.
     """
     # a. Melaporkan nilai Silhouette Score
     silhouette_avg = silhouette_score(tfidf_matrix, df['klaster'])
@@ -90,10 +93,13 @@ def analisis_klaster(df, tfidf_matrix, kmeans_model, vectorizer):
     print(df['klaster'].value_counts().sort_index().to_string())
 
     # c. Mengidentifikasi dan menampilkan kata-kata kunci utama per klaster
-    print("\nKata Kunci Utama per Klaster (Top 15):")
+    print(f"\nKata Kunci Utama per Klaster (Top {n_top_words}):")
     
     # Menggunakan fungsi baru untuk mendapatkan kata kunci dari centroid
-    top_keywords = get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words=15)
+    top_keywords = get_top_keywords_per_cluster(kmeans_model, vectorizer, n_top_words=n_top_words)
     
     for cluster_id, keywords in top_keywords.items():
         print(f"  - Klaster {cluster_id}: {', '.join(keywords)}")
+
+    return top_keywords
+
