@@ -1,0 +1,18 @@
+feat: Sentralisasi konfigurasi dan tingkatkan visualisasi
+
+Memperkenalkan refaktorisasi besar untuk memindahkan semua parameter
+penting ke dalam satu file pusat (config.py). Hal ini secara
+signifikan meningkatkan fleksibilitas dan kemudahan dalam melakukan
+eksperimen.
+
+Perubahan Utama:
+- Semua parameter untuk TF-IDF, K-Means, bobot skor, dan visualisasi
+  kini dapat diatur melalui `config.py`.
+- Menambahkan visualisasi baru: plot PCA 2D untuk sebaran klaster
+  dan heatmap korelasi untuk analisis fitur.
+- Meningkatkan kualitas semua visualisasi yang ada dengan resolusi
+  dan palet warna yang konsisten.
+- Menambahkan kolom `top_keywords` pada file output CSV utama untuk
+  memudahkan analisis hasil.
+- Memperbarui dokumentasi (README.md) secara menyeluruh untuk
+  mencerminkan arsitektur dan fitur baru.
