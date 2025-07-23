@@ -25,8 +25,9 @@ def save_output(df, output_path):
         "kritik dan saran",
         "teks_bersih",
         "klaster",
+        "top_keywords",
         "sentimen",
-        "skor_sentimen", # Tambahkan kolom skor_sentimen
+        "skor_sentimen",
         "makna",
         "skor_konstruktif"
     ]
@@ -52,7 +53,7 @@ def save_meaningful_comments(df, output_path):
     # Simpan ke CSV
     output_df.to_csv(output_path, index=False)
 
-def save_constructive_comments(df, output_path, threshold=2):
+def save_constructive_comments(df, output_path, threshold):
     """
     Simpan kritik dan saran yang dianggap konstruktif ke dalam satu kolom di file CSV.
     """

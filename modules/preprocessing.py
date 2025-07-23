@@ -23,12 +23,11 @@ normalization_dict = load_normalization_dict()
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
 stopword_list = set(stopwords.words("indonesian"))
-stopword_list.remove('baik')
-stopword_list.remove('tidak')
-stopword_list.remove('kurang')
-stopword_list.remove('lebih')
-stopword_list.remove('sangat')
 
+# Hapus beberapa stopword yang mungkin relevan (didefinisikan di config)
+for word in config.STOPWORDS_TO_KEEP:
+    if word in stopword_list:
+        stopword_list.remove(word)
 
 def proses_teks(teks):
     """
