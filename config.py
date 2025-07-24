@@ -22,15 +22,15 @@ TFIDF_MAX_DF = 0.85       # Abaikan kata yang muncul di lebih dari X% dokumen
 TFIDF_NGRAM_RANGE = (1, 2)  # Rentang N-gram (1,1=unigram, 1,2=unigram+bigram)
 
 # --- Parameter Clustering ---
-K_RANGE = (2, 21)    # Rentang nilai K untuk diuji dalam clustering
-N_TOP_WORDS = 15     # Jumlah kata kunci teratas per klaster
+K_RANGE = (2, 10)    # Rentang nilai K untuk diuji dalam clustering
+N_TOP_WORDS = 10     # Jumlah kata kunci teratas per klaster
 
 # --- Parameter Analisis & Logika ---
-MAKNA_THRESHOLD = 4         # Minimum jumlah kata agar dianggap bermakna
+MAKNA_THRESHOLD = 2         # Minimum jumlah kata agar dianggap bermakna
 MEANINGFUL_KEYWORDS = ["saran", "kritik", "perbaikan"] # Kata kunci pemicu status "bermakna"
 CONSTRUCTIVE_THRESHOLD = 3  # Minimum skor agar dianggap saran konstruktif
-N_EXAMPLE_COMMENTS = 5      # Jumlah contoh komentar per klaster untuk disimpan
-N_PREPROCESSING_EXAMPLES = 3 # Jumlah contoh preprocessing yang ditampilkan di log
+N_EXAMPLE_COMMENTS = 10      # Jumlah contoh komentar per klaster untuk disimpan
+N_PREPROCESSING_EXAMPLES = 10 # Jumlah contoh preprocessing yang ditampilkan di log
 
 # --- Bobot Skor untuk Analisis Konstruktif ---
 SCORE_LEN_LONG = 2          # Bonus skor untuk komentar panjang (> 15 kata)

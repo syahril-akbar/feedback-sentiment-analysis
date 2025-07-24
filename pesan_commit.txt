@@ -1,8 +1,0 @@
-Refactor: Strukturisasi Ulang Kamus & Normalisasi Teks
-
-Perubahan ini melakukan beberapa pembaruan signifikan:
-- Merestrukturisasi direktori `lexicon` ke dalam direktori baru `kamus` untuk pengelolaan yang lebih baik.
-- Menambahkan kamus normalisasi baru (`kbba.txt`) untuk menangani kata-kata slang dan tidak baku.
-- Memperbarui modul `preprocessing.py` untuk mengintegrasikan langkah normalisasi kata menggunakan kamus baru.
-- Memindahkan path konfigurasi kamus normalisasi ke dalam file `config.py` untuk sentralisasi.
-- Menyesuaikan threshold untuk deteksi komentar bermakna.

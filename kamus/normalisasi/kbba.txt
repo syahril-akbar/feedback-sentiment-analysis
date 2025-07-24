@@ -1,3 +1,7 @@
+acnya	ac
+dinginn	dingin
+kerna	karena
+pake	pakai
 7an	tujuan
 @	di
 ababil	abg labil
@@ -824,7 +828,6 @@ otw	on the way, sedang di jalan
 pa	apa
 pacal	pacar
 pahe	paket hemat
-pake	pakai
 pakek	pakai
 pala	kepala
 panja	panitia kerja
@@ -1184,7 +1187,6 @@ sept	september
 nyaingin	saing
 nmenarik	menarik
 war	perang
-pake	pakai
 janjinyaa	janji
 zonk	bodoh
 fitnag	fitnah
@@ -1300,7 +1302,7 @@ penertiban	tertib
 orange	oranye
 uasai	kuasa
 vote	pilih
-mnolak	tolak
+mnolak	tolal
 menolak	tolak
 trending	trend
 presh	segar
@@ -1317,3 +1319,4 @@ benarjujur	benar
 benarjujur	jujur
 sayan	sayang
 mgkin	mungkin
+rekomen	rekomendasi

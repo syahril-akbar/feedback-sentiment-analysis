@@ -10,6 +10,8 @@ def load_normalization_dict(path=config.NORMALIZATION_DICT):
     try:
         df = pd.read_csv(path, sep='	', header=None, names=['slang', 'formal'])
         df.dropna(inplace=True)
+        # Mengatasi duplikat jika ada, ambil yang pertama
+        df = df.drop_duplicates(subset=['slang'])
         return pd.Series(df.formal.values, index=df.slang).to_dict()
     except FileNotFoundError:
         print(f"Peringatan: File kamus normalisasi tidak ditemukan di '{path}'. Normalisasi slang tidak akan dilakukan.")
@@ -18,16 +20,35 @@ def load_normalization_dict(path=config.NORMALIZATION_DICT):
         print(f"Terjadi error saat memuat kamus normalisasi: {e}")
         return {}
 
-# Inisialisasi
-normalization_dict = load_normalization_dict()
-factory = StemmerFactory()
-stemmer = factory.create_stemmer()
-stopword_list = set(stopwords.words("indonesian"))
+# --- Inisialisasi Stopwords dan Stemmer ---
 
-# Hapus beberapa stopword yang mungkin relevan (didefinisikan di config)
+# 1. Daftar stopword dasar dari NLTK
+stopword_list_nltk = set(stopwords.words("indonesian"))
+
+# 2. Daftar stopword tambahan yang spesifik untuk konteks ini
+# Kata-kata ini sering muncul tapi tidak memberikan makna topik yang jelas
+custom_stopwords = {
+    'lebih', 'baik', 'sangat', 'kurang', 'tidak', 'nya', 'sih', 'ya', 'biar',
+    'moga', 'semoga', 'saran', 'kasih', 'terima', 'terimakasih', 'mohon',
+    'tolong', 'agar', 'buat', 'untuk', 'supaya', 'tetap', 'perlu', 'adain',
+    'diadain', 'diadakan', 'atas', 'bawah', 'depan', 'belakang', 'pada',
+    'juga', 'lagi', 'masih', 'udah', 'sudah', 'aja', 'saja', 'ok', 'oke',
+    'lumayan', 'cukup', 'selalu', 'paling', 'agak'
+}
+
+# 3. Gabungkan kedua daftar stopword
+stopword_list = stopword_list_nltk.union(custom_stopwords)
+
+# 4. Hapus beberapa stopword yang mungkin relevan (jika didefinisikan di config)
 for word in config.STOPWORDS_TO_KEEP:
     if word in stopword_list:
         stopword_list.remove(word)
+
+# 5. Inisialisasi komponen lain
+normalization_dict = load_normalization_dict()
+factory = StemmerFactory()
+stemmer = factory.create_stemmer()
+
 
 def proses_teks(teks):
     """
@@ -52,7 +73,8 @@ def proses_teks(teks):
     tokens = [kata for kata in tokens if kata not in stopword_list]
 
     # 7. Stemming: Mengubah kata ke bentuk dasarnya
-    hasil = " ".join([stemmer.stem(kata) for kata in tokens])
+    tokens = [stemmer.stem(kata) for kata in tokens]
+    hasil = " ".join(tokens)
     
     return hasil
 
@@ -87,7 +109,9 @@ def tampilkan_langkah_preprocessing(teks):
     print(f"  -> 6. Stopword Removal: {tokens_no_stopwords}")
 
     # 7. Stemming
-    tokens_stemmed = [stemmer.stem(kata) for kata in tokens_no_stopwords]
+    # Gabungkan dulu sebelum stemming untuk konteks yang lebih baik
+    teks_sebelum_stem = " ".join(tokens_no_stopwords)
+    tokens_stemmed = stemmer.stem(teks_sebelum_stem).split()
     print(f"  -> 7. Stemming: {tokens_stemmed}")
 
     hasil_akhir = " ".join(tokens_stemmed)

@@ -9,12 +9,18 @@ def load_lexicon(pos_path, neg_path):
     lex_neg = set(pd.read_csv(neg_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
     return lex_pos, lex_neg
 
+import re
+
 def klasifikasi_sentimen(teks, lex_pos, lex_neg):
     """
     Klasifikasi sentimen berdasarkan perhitungan skor kata positif dan negatif.
     Mengembalikan Series Pandas dengan 'label' dan 'skor'.
     """
-    skor = sum(1 for kata in teks.split() if kata in lex_pos) - sum(1 for kata in teks.split() if kata in lex_neg)
+    # Lakukan pembersihan dasar untuk menghapus tanda baca agar perbandingan kata lebih akurat
+    teks_bersih = re.sub(r'[^a-z\s]', '', teks.lower())
+    tokens = teks_bersih.split()
+    
+    skor = sum(1 for kata in tokens if kata in lex_pos) - sum(1 for kata in tokens if kata in lex_neg)
     if skor > 0:
         label = "positif"
     elif skor < 0:

@@ -8,3 +8,4 @@ seaborn
 wordcloud
 google-generativeai
 python-dotenv
+wordcloud
