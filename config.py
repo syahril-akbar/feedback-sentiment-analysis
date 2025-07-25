@@ -16,9 +16,30 @@ OUTPUT_CONSTRUCTIVE_PATH = "output/saran_konstruktif.csv"
 RANDOM_SEED = 42  # Seed untuk proses acak agar hasil bisa direproduksi
 
 # --- Parameter Pra-pemrosesan & Vektorisasi ---
-STOPWORDS_TO_KEEP = ['baik', 'tidak', 'kurang', 'lebih', 'sangat'] # Kata yang dikecualikan dari daftar stopword
-TFIDF_MIN_DF = 3          # Abaikan kata yang muncul di kurang dari X dokumen
-TFIDF_MAX_DF = 0.85       # Abaikan kata yang muncul di lebih dari X% dokumen
+# Kata-kata penting yang ingin dipertahankan meskipun ada di daftar stopword standar
+STOPWORDS_TO_KEEP = ['baik', 'tidak', 'kurang', 'lebih', 'sangat', 'puas', 'kecewa']
+
+# Kata-kata umum/tidak informatif yang ingin dihapus dari analisis
+CUSTOM_STOPWORDS = {
+    # Kata umum & pengisi
+    'lebih', 'baik', 'sangat', 'kurang', 'tidak', 'nya', 'sih', 'ya', 'biar',
+    'moga', 'semoga', 'kasih', 'terima', 'terimakasih', 'mohon', 'tolong',
+    'agar', 'buat', 'untuk', 'supaya', 'tetap', 'perlu', 'atas', 'bawah',
+    'depan', 'belakang', 'pada', 'juga', 'lagi', 'masih', 'udah', 'sudah',
+    'aja', 'saja', 'ok', 'oke', 'lumayan', 'cukup', 'selalu', 'paling', 'agak',
+    'banget', 'dong', 'kak', 'pak', 'bu', 'mas', 'mbak', 'gaes', 'guys',
+
+    # Singkatan umum
+    'yg', 'dgn', 'ga', 'gak', 'enggak', 'tdk', 'utk', 'dpt',
+
+    # Kata terkait konteks "kritik & saran" yang mungkin terlalu umum
+    'saran', 'kritik', 'masukan', 'komentar',
+
+    # Kata kerja tindakan yang umum
+    'adain', 'diadain', 'diadakan', 'ditingkatkan', 'diperbaiki'
+}
+TFIDF_MIN_DF = 2          # Abaikan kata yang muncul di kurang dari 2 dokumen
+TFIDF_MAX_DF = 0.80       # Abaikan kata yang muncul di lebih dari 80% dokumen
 TFIDF_NGRAM_RANGE = (1, 2)  # Rentang N-gram (1,1=unigram, 1,2=unigram+bigram)
 
 # --- Parameter Clustering ---

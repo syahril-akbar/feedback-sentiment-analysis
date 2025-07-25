@@ -25,21 +25,10 @@ def load_normalization_dict(path=config.NORMALIZATION_DICT):
 # 1. Daftar stopword dasar dari NLTK
 stopword_list_nltk = set(stopwords.words("indonesian"))
 
-# 2. Daftar stopword tambahan yang spesifik untuk konteks ini
-# Kata-kata ini sering muncul tapi tidak memberikan makna topik yang jelas
-custom_stopwords = {
-    'lebih', 'baik', 'sangat', 'kurang', 'tidak', 'nya', 'sih', 'ya', 'biar',
-    'moga', 'semoga', 'saran', 'kasih', 'terima', 'terimakasih', 'mohon',
-    'tolong', 'agar', 'buat', 'untuk', 'supaya', 'tetap', 'perlu', 'adain',
-    'diadain', 'diadakan', 'atas', 'bawah', 'depan', 'belakang', 'pada',
-    'juga', 'lagi', 'masih', 'udah', 'sudah', 'aja', 'saja', 'ok', 'oke',
-    'lumayan', 'cukup', 'selalu', 'paling', 'agak'
-}
+# 2. Gabungkan dengan daftar stopword tambahan dari config
+stopword_list = stopword_list_nltk.union(config.CUSTOM_STOPWORDS)
 
-# 3. Gabungkan kedua daftar stopword
-stopword_list = stopword_list_nltk.union(custom_stopwords)
-
-# 4. Hapus beberapa stopword yang mungkin relevan (jika didefinisikan di config)
+# 3. Hapus beberapa stopword yang mungkin relevan (jika didefinisikan di config)
 for word in config.STOPWORDS_TO_KEEP:
     if word in stopword_list:
         stopword_list.remove(word)
