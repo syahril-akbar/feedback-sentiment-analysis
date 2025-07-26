@@ -21,9 +21,9 @@ class Tee:
             f.flush()
 
 def main():
-    log_dir = "output"
-    log_file_path = os.path.join(log_dir, "laporan_analisis.txt")
-    os.makedirs(log_dir, exist_ok=True)
+    # Pastikan direktori output ada
+    os.makedirs(config.OUTPUT_DIR, exist_ok=True)
+    log_file_path = os.path.join(config.OUTPUT_DIR, config.LOG_FILE)
 
     original_stdout = sys.stdout
     
@@ -41,19 +41,18 @@ def main():
             # --- Langkah Diagnostik ---
             print("Nama kolom yang terdeteksi dalam file:", list(df.columns))
             
-            kolom_target = "kritik dan saran"
-            if kolom_target not in df.columns:
-                print(f"\n[ERROR] Kolom '{kolom_target}' tidak ditemukan dalam file data.")
-                print("Pastikan nama kolom di file Excel sudah benar.")
+            if config.TARGET_COLUMN not in df.columns:
+                print(f"\n[ERROR] Kolom '{config.TARGET_COLUMN}' tidak ditemukan dalam file data.")
+                print("Pastikan nama kolom di file Excel atau di config.py sudah benar.")
                 sys.exit(1)
             # --- Akhir Langkah Diagnostik ---
 
-            df["teks_bersih"] = df[kolom_target].apply(preprocessing.proses_teks)
+            df["teks_bersih"] = df[config.TARGET_COLUMN].apply(preprocessing.proses_teks)
             
             print("\n--- TAHAP 1: PREPROCESSING TEKS ---")
             print(f"Menampilkan {config.N_PREPROCESSING_EXAMPLES} contoh hasil preprocessing:\n")
             for i in range(min(config.N_PREPROCESSING_EXAMPLES, len(df))): # Pastikan tidak error jika data < contoh
-                preprocessing.tampilkan_langkah_preprocessing(df[kolom_target].iloc[i])
+                preprocessing.tampilkan_langkah_preprocessing(df[config.TARGET_COLUMN].iloc[i])
             
             # [2] Vektorisasi TF-IDF
             tfidf_matrix, feature_names, vectorizer = tfidf_vectorizer.ubah_ke_tfidf(df["teks_bersih"])
@@ -88,21 +87,24 @@ def main():
 
             # [6] Simpan Hasil & Visualisasi
             print("\n--- TAHAP 6: PENYIMPANAN HASIL & VISUALISASI ---")
-            utils.save_output(df, config.OUTPUT_PATH)
-            utils.save_meaningful_comments(df, config.OUTPUT_MEANINGFUL_PATH)
-            utils.save_constructive_comments(df, config.OUTPUT_CONSTRUCTIVE_PATH, threshold=config.CONSTRUCTIVE_THRESHOLD)
-            visualization.tabel_statistik_per_klaster(df)
-            visualization.contoh_komentar_per_klaster(df, n=config.N_EXAMPLE_COMMENTS)
+            
+            # Menggunakan path dari config untuk menyimpan semua output
+            output_dir = config.OUTPUT_DIR
+            utils.save_output(df, os.path.join(output_dir, config.OUTPUT_CSV))
+            utils.save_meaningful_comments(df, os.path.join(output_dir, config.OUTPUT_MEANINGFUL_CSV))
+            utils.save_constructive_comments(df, os.path.join(output_dir, config.OUTPUT_CONSTRUCTIVE_CSV), threshold=config.CONSTRUCTIVE_THRESHOLD)
+            visualization.tabel_statistik_per_klaster(df) # Fungsi ini sudah menyimpan ke path yang benar
+            visualization.contoh_komentar_per_klaster(df, n=config.N_EXAMPLE_COMMENTS) # Fungsi ini juga
             
             visualization.visualisasi_semua(df, tfidf_matrix)
             visualization.plot_silhouette_scores(silhouette_scores, best_k)
             
-            print(f"-> Hasil analisis lengkap (CSV) telah disimpan di '{config.OUTPUT_PATH}'.")
-            print(f"-> Komentar bermakna (CSV) telah disimpan di '{config.OUTPUT_MEANINGFUL_PATH}'.")
-            print(f"-> Saran konstruktif (CSV) telah disimpan di '{config.OUTPUT_CONSTRUCTIVE_PATH}'.")
-            print(f"-> Statistik per klaster (CSV) telah disimpan di 'output/statistik_per_klaster.csv'.")
-            print(f"-> Contoh komentar per klaster (TXT) telah disimpan di 'output/contoh_komentar_per_klaster.txt'.")
-            print("-> Semua visualisasi (PNG) telah disimpan di folder 'output/'.")
+            print(f"\n-> Hasil analisis lengkap (CSV) telah disimpan di '{os.path.join(output_dir, config.OUTPUT_CSV)}'.")
+            print(f"-> Komentar bermakna (CSV) telah disimpan di '{os.path.join(output_dir, config.OUTPUT_MEANINGFUL_CSV)}'.")
+            print(f"-> Saran konstruktif (CSV) telah disimpan di '{os.path.join(output_dir, config.OUTPUT_CONSTRUCTIVE_CSV)}'.")
+            print(f"-> Statistik per klaster (CSV) telah disimpan di '{os.path.join(output_dir, config.OUTPUT_STATS_CSV)}'.")
+            print(f"-> Contoh komentar per klaster (TXT) telah disimpan di '{os.path.join(output_dir, config.OUTPUT_COMMENTS_TXT)}'.")
+            print(f"-> Semua visualisasi (PNG) telah disimpan di folder '{output_dir}/'.")
             
             print("\n" + "="*50)
             print("ANALISIS SELESAI")

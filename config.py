@@ -7,10 +7,19 @@ LEXICON_POS = "kamus/lexicon/InSet_positif.tsv"
 LEXICON_NEG = "kamus/lexicon/InSet_negatif.tsv"
 NORMALIZATION_DICT = "kamus/normalisasi/kbba.txt"
 
-# Output
-OUTPUT_PATH = "output/hasil_akhir.csv"
-OUTPUT_MEANINGFUL_PATH = "output/komentar_bermakna.csv"
-OUTPUT_CONSTRUCTIVE_PATH = "output/saran_konstruktif.csv"
+# --- Path & Nama File Input ---
+DATA_PATH = "data/kritik_saran.xlsx"
+GROUND_TRUTH_PATH = "data/data_uji_manual.csv"
+TARGET_COLUMN = "kritik dan saran" # Nama kolom yang berisi teks untuk dianalisis
+
+# --- Path & Nama File Output ---
+OUTPUT_DIR = "output"
+LOG_FILE = "laporan_analisis.txt"
+OUTPUT_CSV = "hasil_akhir.csv"
+OUTPUT_MEANINGFUL_CSV = "komentar_bermakna.csv"
+OUTPUT_CONSTRUCTIVE_CSV = "saran_konstruktif.csv"
+OUTPUT_STATS_CSV = "statistik_per_klaster.csv"
+OUTPUT_COMMENTS_TXT = "contoh_komentar_per_klaster.txt"
 
 # --- Parameter Global ---
 RANDOM_SEED = 42  # Seed untuk proses acak agar hasil bisa direproduksi
