@@ -1,5 +1,6 @@
 import pandas as pd
 import config
+import re
 
 def load_lexicon(pos_path, neg_path):
     """
@@ -9,36 +10,53 @@ def load_lexicon(pos_path, neg_path):
     lex_neg = set(pd.read_csv(neg_path, delimiter='	', header=None, names=['word', 'weight'])['word'])
     return lex_pos, lex_neg
 
-import re
-
 def klasifikasi_sentimen(teks, lex_pos, lex_neg):
     """
     Klasifikasi sentimen berdasarkan perhitungan skor kata positif dan negatif.
     Mengembalikan Series Pandas dengan 'label' dan 'skor'.
     """
-    # Lakukan pembersihan dasar untuk menghapus tanda baca agar perbandingan kata lebih akurat
-    teks_bersih = re.sub(r'[^a-z\s]', '', teks.lower())
-    tokens = teks_bersih.split()
+    tokens = teks.lower().split()
     
     skor = sum(1 for kata in tokens if kata in lex_pos) - sum(1 for kata in tokens if kata in lex_neg)
+    
     if skor > 0:
         label = "positif"
     elif skor < 0:
         label = "negatif"
     else:
         label = "netral"
+        
     return pd.Series([label, skor], index=['sentimen', 'skor_sentimen'])
 
 def cek_komentar_bermakna(teks):
     """
     Klasifikasi apakah komentar termasuk 'bermakna' atau 'tidak bermakna'.
+    Aturan baru:
+    1. Harus lebih panjang dari MAKNA_THRESHOLD.
+    2. Tidak boleh HANYA berisi kata-kata pujian umum.
+    3. Atau mengandung kata kunci eksplisit (saran/kritik).
     """
-    token = teks.split()
-    if len(token) >= config.MAKNA_THRESHOLD:
+    tokens = teks.lower().split()
+    
+    # Aturan 1: Cek panjang minimum
+    if len(tokens) < config.MAKNA_THRESHOLD:
+        return "tidak bermakna"
+        
+    # Aturan 2: Cek apakah hanya berisi kata pujian
+    # Buat set dari token untuk perbandingan yang efisien
+    token_set = set(tokens)
+    pujian_set = set(config.KATA_PUJIAN)
+    
+    # Jika semua token dalam komentar ada di dalam daftar kata pujian
+    if token_set.issubset(pujian_set):
+        return "tidak bermakna"
+
+    # Aturan 3: Cek kata kunci eksplisit (opsional, tapi menjaga logika lama)
+    if any(k in tokens for k in config.MEANINGFUL_KEYWORDS):
         return "bermakna"
-    if any(k in teks for k in config.MEANINGFUL_KEYWORDS):
-        return "bermakna"
-    return "tidak bermakna"
+        
+    # Jika lolos dari aturan 1 dan 2, anggap bermakna
+    return "bermakna"
 
 def analisis_konstruktif(teks):
     """

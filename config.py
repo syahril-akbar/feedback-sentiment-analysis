@@ -22,7 +22,7 @@ STOPWORDS_TO_KEEP = ['baik', 'tidak', 'kurang', 'lebih', 'sangat', 'puas', 'kece
 # Kata-kata umum/tidak informatif yang ingin dihapus dari analisis
 CUSTOM_STOPWORDS = {
     # Kata umum & pengisi
-    'lebih', 'baik', 'sangat', 'kurang', 'tidak', 'nya', 'sih', 'ya', 'biar',
+    'lebih', 'baik', 'sangat', 'nya', 'sih', 'ya', 'biar',
     'moga', 'semoga', 'kasih', 'terima', 'terimakasih', 'mohon', 'tolong',
     'agar', 'buat', 'untuk', 'supaya', 'tetap', 'perlu', 'atas', 'bawah',
     'depan', 'belakang', 'pada', 'juga', 'lagi', 'masih', 'udah', 'sudah',
@@ -62,6 +62,7 @@ SCORE_PRAISE_WORD = -1      # Penalti skor untuk kata kunci pujian
 SCORE_COMBO_BONUS = 2       # Bonus skor untuk kombinasi saran & kritik
 
 # --- Daftar Kata Kunci untuk Analisis Skor Konstruktif ---
+KATA_NEGASI = ["tidak", "bukan", "jangan", "kurang", "tanpa"]
 KATA_SARAN = ["saran", "sebaiknya", "mungkin", "bisa", "tolong", "mohon", "tingkatkan", "perbaiki", "perlu", "tambah", "diperluas"]
 KATA_KRITIK = ["kurang", "tidak", "lambat", "sulit", "membingungkan", "masalah", "buruk", "jelek", "kotor", "panas", "basi"]
 KATA_PUJIAN = ["terima kasih", "mantap", "bagus", "keren", "baik", "puas", "enak", "nyaman", "bersih"]
