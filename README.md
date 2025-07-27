@@ -1,48 +1,40 @@
-# Analisis Clustering dan Sentimen pada Data Teks Kritikan dan Saran
+# Analisis Sentimen dan Topik pada Data Teks Menggunakan K-Means Clustering
 
-Proyek ini merupakan implementasi sistem untuk menganalisis data teks berupa kritikan dan saran. Tujuannya adalah untuk mengelompokkan (clustering) topik-topik utama yang dibicarakan, menganalisis sentimen (positif/negatif), serta mengidentifikasi masukan yang bermakna dan konstruktif.
+Proyek ini adalah implementasi sistem untuk menganalisis data teks, khususnya untuk mengelompokkan topik-topik utama dan menganalisis sentimen yang terkandung di dalamnya. Sistem ini menggunakan **K-Means Clustering** untuk pengelompokan topik secara *unsupervised* dan **Analisis Sentimen berbasis Leksikon** untuk menentukan polaritas sentimen.
 
-Metode yang digunakan adalah **K-Means Clustering** untuk pengelompokan topik secara *unsupervised* dan **Sentiment Analysis berbasis Lexicon** untuk menentukan polaritas sentimen. Proyek ini dirancang agar **sangat fleksibel**, di mana semua parameter penting dapat dikonfigurasi dari satu file pusat (`config.py`).
-
-## 🎯 Tujuan Proyek
-
-- Mengimplementasikan algoritma K-Means untuk mengelompokkan data teks.
-- Menganalisis sentimen (positif, negatif, netral) dari setiap masukan.
-- Mengidentifikasi komentar yang dianggap "bermakna" dan memberikan skor "konstruktif".
-- Mengidentifikasi topik-topik utama melalui analisis klaster.
-- Menyediakan visualisasi dan laporan yang mudah dipahami untuk membantu interpretasi hasil.
+Salah satu keunggulan utama proyek ini adalah **fleksibilitasnya**. Semua parameter penting, mulai dari path file hingga bobot untuk skor, dapat dikonfigurasi melalui satu file pusat, yaitu `config.py`.
 
 ## 🚀 Fitur Utama
 
-- **Preprocessing Teks**: Membersihkan dan mempersiapkan data teks (case folding, tokenizing, stopword removal, stemming).
-- **Pembobotan TF-IDF**: Mengubah teks menjadi representasi numerik dengan parameter yang dapat disesuaikan (`min_df`, `max_df`, `ngram_range`).
-- **K-Means Clustering**: Mengelompokkan data dan menentukan jumlah klaster optimal (`k`) secara otomatis menggunakan *Silhouette Score*.
-- **Analisis Topik (Kata Kunci)**: Mengidentifikasi kata-kata kunci yang paling representatif dari setiap klaster.
-- **Analisis Sentimen & Makna**: Mengklasifikasikan sentimen, makna, dan skor konstruktif untuk setiap masukan.
-- **Evaluasi Model**: Membandingkan hasil sentimen dan makna dengan data uji manual.
+- **Preprocessing Teks Komprehensif**: Termasuk case folding, normalisasi (menggunakan kamus `kbba.txt`), penghapusan stopwords, dan stemming.
+- **Vektorisasi TF-IDF**: Mengubah teks menjadi representasi numerik dengan parameter yang dapat disesuaikan (`min_df`, `max_df`, `ngram_range`).
+- **Clustering K-Means dengan Penentuan `k` Otomatis**: Mengelompokkan data dan menentukan jumlah klaster optimal (`k`) secara otomatis menggunakan **Silhouette Score**.
+- **Analisis Topik (Kata Kunci)**: Mengidentifikasi kata-kata kunci yang paling representatif dari setiap klaster untuk interpretasi topik.
+- **Analisis Sentimen & Makna**: Mengklasifikasikan sentimen (positif, negatif, netral) dan mengidentifikasi komentar yang dianggap "bermakna".
+- **Skor Konstruktif**: Memberikan skor pada komentar berdasarkan bobot yang dapat disesuaikan untuk kata-kata saran, kritik, dan pujian.
 - **Visualisasi Data Komprehensif**:
     - Distribusi klaster, sentimen, dan makna.
-    - Word cloud per klaster.
-    - Grafik Silhouette Score untuk penentuan `k`.
+    - Word cloud per klaster untuk visualisasi topik.
+    - Grafik Silhouette Score untuk penentuan `k` optimal.
     - **Visualisasi PCA 2D** untuk melihat sebaran klaster.
     - **Heatmap Korelasi** untuk melihat hubungan antar fitur.
-- **Konfigurasi Terpusat**: Semua parameter penting (TF-IDF, K-Means, bobot skor, path file, dll.) dapat dengan mudah diubah dari satu file `config.py` tanpa menyentuh kode logika.
-- **Laporan Otomatis**: Menghasilkan file laporan `.txt` yang merangkum seluruh proses dan hasil analisis.
+- **Struktur Direktori yang Jelas**: Memisahkan data, konfigurasi, dan logika aplikasi untuk kemudahan pemeliharaan.
+- **Laporan Analisis Otomatis**: Menghasilkan file `.txt` yang merangkum seluruh proses dan hasil analisis, serta file `.csv` untuk hasil yang lebih detail.
 
 ## 📂 Struktur Direktori
 
 ```
-skripsi-kmeans-nlp-monev/
-├── data/                 # Berisi data input (kritik_saran.xlsx) dan data uji
-├── lexicon/              # Berisi lexicon sentimen positif dan negatif
+.
+├── data/                 # Berisi data input (kritik_saran.xlsx) dan data uji (ground_truth.csv)
+├── kamus/                # Berisi kamus untuk normalisasi dan leksikon sentimen
+│   ├── lexicon/          # Leksikon untuk sentimen positif dan negatif
+│   └── normalisasi/      # Kamus untuk normalisasi kata (slang, singkatan, dll.)
 ├── modules/              # Kumpulan modul Python untuk setiap tahap analisis
 ├── output/               # Tempat menyimpan semua hasil analisis (CSV, gambar, laporan)
-├── .gitignore
+├── .gitignore            # File untuk mengabaikan file yang tidak perlu di-commit
 ├── config.py             # FILE KONFIGURASI UTAMA untuk semua parameter
 ├── main.py               # Skrip utama untuk menjalankan seluruh alur kerja
-├── requirements.txt      # Daftar library Python yang dibutuhkan
-├── download_nltk_data.py # Skrip untuk mengunduh data NLTK yang dibutuhkan
-└── README.md
+└── requirements.txt      # Daftar library Python yang dibutuhkan
 ```
 
 ## 🛠️ Instalasi dan Penggunaan
@@ -54,7 +46,7 @@ git clone https://github.com/syahril-akbar/skripsi-kmeans-nlp-monev.git
 cd skripsi-kmeans-nlp-monev
 ```
 
-### 2. Buat Virtual Environment
+### 2. Buat dan Aktifkan Virtual Environment
 
 Sangat disarankan untuk menggunakan *virtual environment* agar tidak mengganggu instalasi Python global.
 
@@ -78,23 +70,18 @@ pip install -r requirements.txt
 ```
 
 ### 4. Unduh Data NLTK
+
 Jalankan skrip berikut untuk mengunduh data `stopwords` dan `punkt` dari NLTK. Skrip ini juga menangani potensi masalah sertifikat SSL.
 
 ```bash
 python download_nltk_data.py
 ```
 
-### 5. Siapkan Data
-Letakkan file data (misalnya `kritik_saran.xlsx`) di dalam direktori `data/`. Pastikan path file sudah benar di `config.py`.
+### 5. Atur Konfigurasi
 
-### 6. Atur Konfigurasi (Penting!)
-Buka file `config.py`. File ini berfungsi sebagai pusat kendali. Sesuaikan parameter di dalamnya sesuai kebutuhan eksperimen. Beberapa parameter kunci yang bisa diubah:
-- **Parameter Pra-pemrosesan**: `TFIDF_MIN_DF`, `TFIDF_MAX_DF`, `TFIDF_NGRAM_RANGE`.
-- **Parameter Clustering**: `K_RANGE` untuk menentukan rentang pencarian klaster.
-- **Parameter Logika**: `CONSTRUCTIVE_THRESHOLD`, `MAKNA_THRESHOLD`, dan semua bobot skor.
-- **Path File**: Pastikan semua path input dan output sudah benar.
+Buka file `config.py`. File ini berfungsi sebagai pusat kendali. Sesuaikan parameter di dalamnya sesuai kebutuhan, terutama `DATA_PATH` dan `GROUND_TRUTH_PATH`.
 
-### 7. Jalankan Analisis Utama
+### 6. Jalankan Analisis Utama
 
 ```bash
 python main.py
@@ -118,3 +105,10 @@ Setelah eksekusi selesai, semua hasil akan tersimpan di dalam direktori `output/
     - `wordcloud_klaster_N.png`: Visualisasi kata-kata paling umum untuk setiap klaster.
     - `pca_clusters.png`: Visualisasi sebaran klaster dalam 2D.
     - `correlation_heatmap.png`: Heatmap korelasi antar fitur.
+
+## 📚 Pustaka Utama
+
+- **Pandas**: Untuk manipulasi dan analisis data.
+- **NLTK**: Untuk pemrosesan bahasa alami (tokenisasi, stopwords).
+- **Scikit-learn**: Untuk implementasi K-Means dan TF-IDF.
+- **Matplotlib & Seaborn**: Untuk visualisasi data.
