@@ -25,16 +25,24 @@ Salah satu keunggulan utama proyek ini adalah **fleksibilitasnya**. Semua parame
 
 ```
 .
-├── data/                 # Berisi data input (kritik_saran.xlsx) dan data uji (ground_truth.csv)
+├── config.py             # FILE KONFIGURASI UTAMA untuk semua parameter
+├── data/                 # Berisi data input (kritik_saran.xlsx) dan data uji manual (data_uji_manual.csv)
+├── download_nltk_data.py # Skrip untuk mengunduh data NLTK yang dibutuhkan
 ├── kamus/                # Berisi kamus untuk normalisasi dan leksikon sentimen
 │   ├── lexicon/          # Leksikon untuk sentimen positif dan negatif
 │   └── normalisasi/      # Kamus untuk normalisasi kata (slang, singkatan, dll.)
-├── modules/              # Kumpulan modul Python untuk setiap tahap analisis
-├── output/               # Tempat menyimpan semua hasil analisis (CSV, gambar, laporan)
-├── .gitignore            # File untuk mengabaikan file yang tidak perlu di-commit
-├── config.py             # FILE KONFIGURASI UTAMA untuk semua parameter
 ├── main.py               # Skrip utama untuk menjalankan seluruh alur kerja
-└── requirements.txt      # Daftar library Python yang dibutuhkan
+├── modules/              # Kumpulan modul Python untuk setiap tahap analisis
+│   ├── clustering.py     # Berisi fungsi untuk K-Means clustering dan penentuan k optimal.
+│   ├── evaluation.py     # Modul untuk evaluasi model, khususnya perbandingan dengan ground truth.
+│   ├── preprocessing.py  # Fungsi-fungsi untuk pra-pemrosesan teks (case folding, normalisasi, stemming, stopword removal).
+│   ├── sentiment_lexicon.py # Implementasi analisis sentimen berbasis leksikon dan identifikasi komentar bermakna/konstruktif.
+│   ├── tfidf_vectorizer.py # Fungsi untuk mengubah teks menjadi representasi TF-IDF.
+│   ├── utils.py          # Fungsi utilitas seperti memuat data, menyimpan output, dan penulisan laporan.
+│   └── visualization.py  # Fungsi untuk membuat berbagai visualisasi data dan hasil analisis.
+├── output/               # Tempat menyimpan semua hasil analisis (CSV, gambar, laporan)
+├── requirements.txt      # Daftar library Python yang dibutuhkan
+└── tests/                # Berisi unit tests dan mock data untuk pengujian
 ```
 
 ## 🛠️ Instalasi dan Penggunaan
