@@ -1,0 +1,192 @@
+==================================================
+ANALISIS CLUSTERING DAN SENTIMEN KRITIK & SARAN
+==================================================
+
+Nama kolom yang terdeteksi dalam file: ['kritik dan saran']
+
+--- TAHAP 1: PREPROCESSING TEKS ---
+Menampilkan 10 contoh hasil preprocessing:
+
+Teks Asli: 'acnya kurang dingin'
+  -> 1. Case Folding: 'acnya kurang dingin'
+  -> 2. Text Cleaning: 'acnya kurang dingin'
+  -> 3. Normalisasi Spasi: 'acnya kurang dingin'
+  -> 4. Tokenizing: ['acnya', 'kurang', 'dingin']
+  -> 5. Normalisasi Kata (Slang): ['ac', 'kurang', 'dingin']
+  -> 6. Stopword Removal: ['ac', 'kurang', 'dingin']
+  -> 7. Stemming: ['ac', 'kurang', 'dingin']
+  => Hasil Akhir: 'ac kurang dingin'
+------------------------------
+Teks Asli: 'Semoga pelatihnya di perluas lagi lingkupnya di Kota Parepare'
+  -> 1. Case Folding: 'semoga pelatihnya di perluas lagi lingkupnya di kota parepare'
+  -> 2. Text Cleaning: 'semoga pelatihnya di perluas lagi lingkupnya di kota parepare'
+  -> 3. Normalisasi Spasi: 'semoga pelatihnya di perluas lagi lingkupnya di kota parepare'
+  -> 4. Tokenizing: ['semoga', 'pelatihnya', 'di', 'perluas', 'lagi', 'lingkupnya', 'di', 'kota', 'parepare']
+  -> 5. Normalisasi Kata (Slang): ['semoga', 'pelatihnya', 'di', 'perluas', 'lagi', 'lingkupnya', 'di', 'kota', 'parepare']
+  -> 6. Stopword Removal: ['pelatihnya', 'perluas', 'lingkupnya', 'kota', 'parepare']
+  -> 7. Stemming: ['latih', 'luas', 'lingkup', 'kota', 'parepare']
+  => Hasil Akhir: 'latih luas lingkup kota parepare'
+------------------------------
+Teks Asli: 'lumayan dinginn dan lumayan bersih'
+  -> 1. Case Folding: 'lumayan dinginn dan lumayan bersih'
+  -> 2. Text Cleaning: 'lumayan dinginn dan lumayan bersih'
+  -> 3. Normalisasi Spasi: 'lumayan dinginn dan lumayan bersih'
+  -> 4. Tokenizing: ['lumayan', 'dinginn', 'dan', 'lumayan', 'bersih']
+  -> 5. Normalisasi Kata (Slang): ['lumayan', 'dingin', 'dan', 'lumayan', 'bersih']
+  -> 6. Stopword Removal: ['dingin', 'bersih']
+  -> 7. Stemming: ['dingin', 'bersih']
+  => Hasil Akhir: 'dingin bersih'
+------------------------------
+Teks Asli: 'Pencahayaan ruangan kurang'
+  -> 1. Case Folding: 'pencahayaan ruangan kurang'
+  -> 2. Text Cleaning: 'pencahayaan ruangan kurang'
+  -> 3. Normalisasi Spasi: 'pencahayaan ruangan kurang'
+  -> 4. Tokenizing: ['pencahayaan', 'ruangan', 'kurang']
+  -> 5. Normalisasi Kata (Slang): ['pencahayaan', 'ruangan', 'kurang']
+  -> 6. Stopword Removal: ['pencahayaan', 'ruangan', 'kurang']
+  -> 7. Stemming: ['cahaya', 'ruang', 'kurang']
+  => Hasil Akhir: 'cahaya ruang kurang'
+------------------------------
+Teks Asli: 'Untuk anak JGD kursi nya kekecilan, susah mouse bergerak selebihnya bagus. Terimakasih'
+  -> 1. Case Folding: 'untuk anak jgd kursi nya kekecilan, susah mouse bergerak selebihnya bagus. terimakasih'
+  -> 2. Text Cleaning: 'untuk anak jgd kursi nya kekecilan susah mouse bergerak selebihnya bagus terimakasih'
+  -> 3. Normalisasi Spasi: 'untuk anak jgd kursi nya kekecilan susah mouse bergerak selebihnya bagus terimakasih'
+  -> 4. Tokenizing: ['untuk', 'anak', 'jgd', 'kursi', 'nya', 'kekecilan', 'susah', 'mouse', 'bergerak', 'selebihnya', 'bagus', 'terimakasih']
+  -> 5. Normalisasi Kata (Slang): ['untuk', 'anak', 'jgd', 'kursi', 'nya', 'kekecilan', 'susah', 'mouse', 'bergerak', 'selebihnya', 'bagus', 'terimakasih']
+  -> 6. Stopword Removal: ['anak', 'jgd', 'kursi', 'kekecilan', 'susah', 'mouse', 'bergerak', 'selebihnya', 'bagus']
+  -> 7. Stemming: ['anak', 'jgd', 'kursi', 'kecil', 'susah', 'mouse', 'gerak', 'lebih', 'bagus']
+  => Hasil Akhir: 'anak jgd kursi kecil susah mouse gerak lebih bagus'
+------------------------------
+Teks Asli: 'semua ok kecuali AC kerna panas'
+  -> 1. Case Folding: 'semua ok kecuali ac kerna panas'
+  -> 2. Text Cleaning: 'semua ok kecuali ac kerna panas'
+  -> 3. Normalisasi Spasi: 'semua ok kecuali ac kerna panas'
+  -> 4. Tokenizing: ['semua', 'ok', 'kecuali', 'ac', 'kerna', 'panas']
+  -> 5. Normalisasi Kata (Slang): ['semua', 'ok', 'kecuali', 'ac', 'karena', 'panas']
+  -> 6. Stopword Removal: ['kecuali', 'ac', 'panas']
+  -> 7. Stemming: ['kecuali', 'ac', 'panas']
+  => Hasil Akhir: 'kecuali ac panas'
+------------------------------
+Teks Asli: 'Pencahayaannya kurang baik'
+  -> 1. Case Folding: 'pencahayaannya kurang baik'
+  -> 2. Text Cleaning: 'pencahayaannya kurang baik'
+  -> 3. Normalisasi Spasi: 'pencahayaannya kurang baik'
+  -> 4. Tokenizing: ['pencahayaannya', 'kurang', 'baik']
+  -> 5. Normalisasi Kata (Slang): ['pencahayaannya', 'kurang', 'baik']
+  -> 6. Stopword Removal: ['pencahayaannya', 'kurang', 'baik']
+  -> 7. Stemming: ['cahaya', 'kurang', 'baik']
+  => Hasil Akhir: 'cahaya kurang baik'
+------------------------------
+Teks Asli: 'Semoga tingkat selanjutnya tetap di adakan segera mungkin di Kota Parepare'
+  -> 1. Case Folding: 'semoga tingkat selanjutnya tetap di adakan segera mungkin di kota parepare'
+  -> 2. Text Cleaning: 'semoga tingkat selanjutnya tetap di adakan segera mungkin di kota parepare'
+  -> 3. Normalisasi Spasi: 'semoga tingkat selanjutnya tetap di adakan segera mungkin di kota parepare'
+  -> 4. Tokenizing: ['semoga', 'tingkat', 'selanjutnya', 'tetap', 'di', 'adakan', 'segera', 'mungkin', 'di', 'kota', 'parepare']
+  -> 5. Normalisasi Kata (Slang): ['semoga', 'tingkat', 'selanjutnya', 'tetap', 'di', 'adakan', 'segera', 'mungkin', 'di', 'kota', 'parepare']
+  -> 6. Stopword Removal: ['tingkat', 'adakan', 'kota', 'parepare']
+  -> 7. Stemming: ['tingkat', 'adakan', 'kota', 'parepare']
+  => Hasil Akhir: 'tingkat adakan kota parepare'
+------------------------------
+Teks Asli: 'Bagus nya pake meja'
+  -> 1. Case Folding: 'bagus nya pake meja'
+  -> 2. Text Cleaning: 'bagus nya pake meja'
+  -> 3. Normalisasi Spasi: 'bagus nya pake meja'
+  -> 4. Tokenizing: ['bagus', 'nya', 'pake', 'meja']
+  -> 5. Normalisasi Kata (Slang): ['bagus', 'nya', 'pakai', 'meja']
+  -> 6. Stopword Removal: ['bagus', 'pakai', 'meja']
+  -> 7. Stemming: ['bagus', 'pakai', 'meja']
+  => Hasil Akhir: 'bagus pakai meja'
+------------------------------
+Teks Asli: 'ACnya belum di cuci'
+  -> 1. Case Folding: 'acnya belum di cuci'
+  -> 2. Text Cleaning: 'acnya belum di cuci'
+  -> 3. Normalisasi Spasi: 'acnya belum di cuci'
+  -> 4. Tokenizing: ['acnya', 'belum', 'di', 'cuci']
+  -> 5. Normalisasi Kata (Slang): ['ac', 'belum', 'di', 'cuci']
+  -> 6. Stopword Removal: ['ac', 'cuci']
+  -> 7. Stemming: ['ac', 'cuci']
+  => Hasil Akhir: 'ac cuci'
+------------------------------
+TF-IDF Vectorizer menggunakan min_df=2, max_df=0.8, ngram_range=(1, 2).
+
+--- TAHAP 2: TF-IDF VECTORIZATION ---
+Teks telah diubah menjadi matriks TF-IDF dengan 2089 fitur unik.
+
+--- TAHAP 3: CLUSTERING K-MEANS ---
+Clustering selesai dengan k=9 (nilai k terbaik).
+Nilai Silhouette Score: 0.029
+
+Distribusi Komentar per Klaster:
+klaster
+0      20
+1     296
+2     161
+3     145
+4     250
+5     225
+6      74
+7    1328
+8     102
+
+Kata Kunci Utama per Klaster (Top 10):
+  - Klaster 0: ganti, menu, buah ganti, kursi, menu ganti, buah, ganti ganti, ganti menu, he, isi
+  - Klaster 1: materi, lebih, baik, lebih baik, ajar, depan, cepat, depan lebih, sampai, sampai materi
+  - Klaster 2: uji, kompetensi, uji kompetensi, baik, serta, assessor, sangat, uji sangat, sesuai, asesor
+  - Klaster 3: sangat, sangat baik, baik, ajar, materi, ajar sangat, materi sangat, uji, latih, serta
+  - Klaster 4: latih, fasilitas, ruang, fasilitas latih, ruang fasilitas, wifi, sedia, lebih, sangat, nyaman
+  - Klaster 5: makan, saji, enak, tidak, basi, makan enak, saji makan, siang, menu, bagi
+  - Klaster 6: dingin, ac, ac dingin, kurang dingin, ac kurang, kurang, ruang, dingin ruang, dingin ac, tidak dingin
+  - Klaster 7: kurang, tidak, ruang, tahan, lebih, jaring, tingkat, cepat, nasi, sedia
+  - Klaster 8: mudah, mudah paham, paham, materi, materi mudah, ajar, sangat, ajar mudah, mudah erti, erti
+
+--- TAHAP 4: ANALISIS SENTIMEN & MAKNA ---
+Distribusi Sentimen:
+sentimen
+positif   37.18%
+netral    34.87%
+negatif   27.95%
+
+Distribusi Makna Komentar:
+makna
+bermakna         90.31%
+tidak bermakna    9.69%
+
+--- TAHAP 5: EVALUASI MODEL ---
+Evaluasi performa klasifikasi Sentimen dan Makna berdasarkan data uji manual:
+=== Evaluasi Sentimen ===
+              precision    recall  f1-score   support
+
+     positif       0.99      1.00      0.99        73
+      netral       1.00      0.96      0.98        57
+     negatif       0.98      1.00      0.99        61
+
+    accuracy                           0.99       191
+   macro avg       0.99      0.99      0.99       191
+weighted avg       0.99      0.99      0.99       191
+
+=== Evaluasi Makna ===
+                precision    recall  f1-score   support
+
+      bermakna       0.88      0.99      0.93       158
+tidak bermakna       0.92      0.36      0.52        33
+
+      accuracy                           0.88       191
+     macro avg       0.90      0.68      0.73       191
+  weighted avg       0.89      0.88      0.86       191
+
+
+--- TAHAP 6: PENYIMPANAN HASIL & VISUALISASI ---
+
+Membuat dan menyimpan visualisasi...
+Visualisasi berhasil disimpan di folder 'output/'.
+
+-> Hasil analisis lengkap (CSV) telah disimpan di 'output\hasil_akhir.csv'.
+-> Komentar bermakna (CSV) telah disimpan di 'output\komentar_bermakna.csv'.
+-> Saran konstruktif (CSV) telah disimpan di 'output\saran_konstruktif.csv'.
+-> Statistik per klaster (CSV) telah disimpan di 'output\statistik_per_klaster.csv'.
+-> Contoh komentar per klaster (TXT) telah disimpan di 'output\contoh_komentar_per_klaster.txt'.
+-> Semua visualisasi (PNG) telah disimpan di folder 'output/'.
+
+==================================================
+ANALISIS SELESAI
+==================================================

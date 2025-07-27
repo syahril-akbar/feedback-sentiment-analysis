@@ -9,7 +9,7 @@ modules/__pycache__/
 .venv/
 
 # Output folder
-output/
+# output/
 
 # IDE configuration
 .idea/

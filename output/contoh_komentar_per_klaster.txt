@@ -1,0 +1,203 @@
+==================================================
+CONTOH KOMENTAR PER KLASTER
+==================================================
+
+--- Klaster 0 ---
+  - Komentar: Ganti kursinya
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Kursinya tolong yg rusak di ganti
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Untuk ruang belajar junior cyber security kabel proyektornya terkadang longgar, mungkin bisa di ganti
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Saran saya kursinya diganti, pakai kursi yang ada gabus. karena kalau kursi plastik sakit punggung, soalnya duduk dari pagi sampai sore
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Ganti daging terus
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Pembungkus makann yang harus diganti karena tidk kokoh
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: agar membantu mengurangi penggunaan kantong plastik boleh di ganti dengan paper bag
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Air gelasnya bisa diganti dengan botol yg kecil, nanggung kalo air gelas
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: masih hambar, lain kali ganti catering
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Lebih baik ganti kemasannya ke kemasan yang ramah lingkungan.
+    (Sentimen: positif, Makna: bermakna)
+
+--- Klaster 1 ---
+  - Komentar: mungkin untuk kedepannya lebih baik lagi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Ruangannya terlalu dingin hehe 😅, menurut saya lebih bagus jika menampilkan slide materi menggunakan proyektor, karena jika via TV tampilannya kurang besar. Jadi materi kurang terlihat jelas. Selebihnya sudah sangat baik. Terimakasih
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Semoga kedepannya disediakan alat tulis atau buku khsus mencatat materi untuk peserta.
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Semoga kedepannya lebih baik lagi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Lebih di perhatikan lagi lcd/proyektornya agar melihat materi lebih nyaman
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: di pertahankan dan lebih ditingkatkan kedepannya
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Tolong kursinya yang lebih baik lagi. Pantan sakit karena duduk lama di kursinya
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Kursinya tolong untuk lebih baik lagi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Yang baik, sebaiknya ditingkatkan lagi kedepannya.
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Untuk proyektornya mungkin bisa di persiapkan lebih baik lagi agar peserta dan pengajar nyaman dalam proses ajar mengajar dan untuk yang lain pengajar juga tidak ngebosanin. jempol berapi
+    (Sentimen: positif, Makna: bermakna)
+
+--- Klaster 2 ---
+  - Komentar: Bisa menyediakan jaringan agar proses ujian lebih efektif
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Tidak ada wifi, dan tidak soal uji nya berbeda seperti yg di kabarkan
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: di sediakan wifi bagi peserta untuk menunjang aktivitas pada pelatihan sampai uji kompetensi selesai
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Mungkin kedepannya bisa menggunakan materi yang akan mengarah ke uji kompetensi langsung
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Masih banyak fitur yang belum dijelaskan tidak sesuai dengan ujiannya
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Baiknya materi bersambung dengan tes yang akan diujikan
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Pengajar sdh memberikan materi pelatihan yang sesuai dengan uji kompetensi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Untuk pengujian sebaiknya menggunakan layar atau preyektor untuk mempersentasikan di depan galas, agar melatih kepercayaan diri dan berbicara di departemen umum
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: para pengajar dan penguji sudah sangat baik dalam menjelaskan dan menguji peserta
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Sebaiknya untuk pelatihan selanjutnya tolong pengantar yang diberikan oleh instruktur/pemateri lebih jelas dan tidak full teori saja, tapi fokus juga di bagian praktiknya agar ketika mengikuti ujian tidak bingung, dimana ujiannya itu mengutamakan praktiknya di banding teorinya. Terima Kasih
+    (Sentimen: netral, Makna: bermakna)
+
+--- Klaster 3 ---
+  - Komentar: Sejauh ini sudah sangat baik, untuk kedepannya lebih di lengkapi segala bentuk fasilitas yang akan digunakan
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Sudah sangat bagus&nyaman. Tapi kalau bisa jangan di lt 4 min:((
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Hari pertama masuk pelatihan, untuk lokasi nya sangat sangat jauh. Saya sempat nyasar di hari pertama.
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Proyektor kurang baik suka disconnect sangat mengganggu proses pembelajaran
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Sudah mantap, mungkin sedikit perbaikan di posisi duduk dan lcd yg agak kurang efektif selebihnya sangat baik
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Sudah sangat baik, hanya mungkin bisa diatur pendinginan lebih merata lagi. Terima kasih
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Ruangan dan Fasilitas sangat baik. Ke depannya semoga tidak berubah dan semakin lebih baik.
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Semua fasilitas dan ruangan sudah sangat baik
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Alhmdulillah pelatihan sangat menyenangkan dengan mentor mentor yg handal serta panitia yang sangat ramah.
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Fasilitas sangat baik dan semoga bisa di bertambah baik lagi kedepan nya
+    (Sentimen: positif, Makna: bermakna)
+
+--- Klaster 4 ---
+  - Komentar: Semoga pelatihnya di perluas lagi lingkupnya di Kota Parepare
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Jangan lupa perbanyak pelatihan di pare pare heheh
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Jangan lupa perbanyak latihan di parepare kak☺
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Terus tingkatkan fasilitas pelatihan
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Ruangan yang digunakan pelatihan sudah bagus
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Semoga Pelatihan Ini Terus di Adakan
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Saran : Dengan lebih memperbanyak pelatihan seperti dan jika bisa ke beberapa daerah juga 
+ Kritik: tidak ada, sejauh ini saya merasa nyaman
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Fasilitas pelatihan seperti lcdnya sering mati2
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Fasilitas sudah lengkap dan memadai
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Semoga tetap konsisten menjalankan pelatihan.. semoga dapat membuka pelatihan ditempat" terpencil yang ada di sulawesi selatan
+    (Sentimen: negatif, Makna: bermakna)
+
+--- Klaster 5 ---
+  - Komentar: Uang saku dan makanan kurang tidak ada cemilan
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Makanan dan uang sakunya perlu ditambah lagi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Makanannya basi
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Tidak bisa membawa makanan ke ruangan
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Makanan hari ke 4 ayamnya Asin Bu
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Tingkatkan rasa makanannya
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: mungkin buahnya bisa divariasikan lagi tpi sejauh ini makanannya enak
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Untuk makanan tidak perlu mewah yang penting rasa nya enak
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Makanan ada yang terlalu asin
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: pengantaran makanan pada saat istirahat mkan siang kadang telat
+    (Sentimen: positif, Makna: bermakna)
+
+--- Klaster 6 ---
+  - Komentar: acnya kurang dingin
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: lumayan dinginn dan lumayan bersih
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: ACnya belum di cuci
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Di sarankan AC nya lebih dingin
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: ruangan nya nyaman, bersih tapi ac nya dingin sekali
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: AC nya masih kurang dingin
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Terlalu dingin
+    (Sentimen: netral, Makna: tidak bermakna)
+  - Komentar: Terlalu dingin
+    (Sentimen: netral, Makna: tidak bermakna)
+  - Komentar: Ruangan sudah bagus tapi kurang dingin
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Pendingin ruangan yang kurang konsisten
+    (Sentimen: negatif, Makna: bermakna)
+
+--- Klaster 7 ---
+  - Komentar: Pencahayaan ruangan kurang
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Untuk anak JGD kursi nya kekecilan, susah mouse bergerak selebihnya bagus. Terimakasih
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: semua ok kecuali AC kerna panas
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Pencahayaannya kurang baik
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Semoga tingkat selanjutnya tetap di adakan segera mungkin di Kota Parepare
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Bagus nya pake meja
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Meja tidak sesuai untuk kebetuhan desain. Tidak ada ruang untuk "mouse" digerakkan.
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: kan ini pelatihan JGD, nggk cocok dong di kursi kuliah soalnya nggk ada tempat mouse
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Untuk AC di ruangan ITH kelas OKM A selalu mati-mati dan bikin ruangan jadi sangat panas dan itu mengganggu/ mengurangi kenyamanan kita
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Meja Kursi tidak muat bagi laptop yang 15inch
+    (Sentimen: negatif, Makna: bermakna)
+
+--- Klaster 8 ---
+  - Komentar: Perlu perhatikan proyektor nya agar tidak buram sehingga memudahkan dalam memahami penjelasan saat presentasi
+    (Sentimen: negatif, Makna: bermakna)
+  - Komentar: Keren,mudah mudahan di adakan lagi dan saya ikut berpartisipasi
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Pelatihan yang di berikan pemateri sudah sangat menarik dan mudah di pahami, semoga kedepannya dalam memberikan materi lebih di tingkatkan
+    (Sentimen: positif, Makna: bermakna)
+  - Komentar: Mudah Basih
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Penyampaian materi yang sangat mudah untuk dimengerti
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Pemateri sangat humble dan mudah dipahami, semoga pelatihan selanjutnya tetap menjadi pemateri
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Materinya mudah untuk dipahami
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: Materi yang telah disampaikan pengajar mudah dipahami
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: penjelasan pengajar sangat mudah di pahami
+    (Sentimen: netral, Makna: bermakna)
+  - Komentar: bapak pengajar sangat baik menympaikan materinya mudah dipahami semoga next time bisa ikut lagi dan pematerinya seperti pameteri yang inj
+    (Sentimen: netral, Makna: bermakna)
+
