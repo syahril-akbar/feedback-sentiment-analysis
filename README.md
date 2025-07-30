@@ -50,8 +50,8 @@ Salah satu keunggulan utama proyek ini adalah **fleksibilitasnya**. Semua parame
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/syahril-akbar/skripsi-kmeans-nlp-monev.git
-cd skripsi-kmeans-nlp-monev
+git clone https://github.com/syahril-akbar/feedback-sentiment-analysis.git
+cd feedback-sentiment-analysis
 ```
 
 ### 2. Buat dan Aktifkan Virtual Environment
